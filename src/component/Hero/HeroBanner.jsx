@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./HeroBanner.scss";
 import logo from "../../assets/logo.png";
-import hero1 from "../../assets/hero/1.jpg";
-import hero2 from "../../assets/hero/2.jpg";
-import hero3 from "../../assets/hero/3.jpg";
-import hero4 from "../../assets/hero/4.jpg";
-import hero5 from "../../assets/hero/5.jpg";
 import leftArrow from "../../assets/hero/left-arrow.svg";
 import rightArrow from "../../assets/hero/right-arrow.svg";
 
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeNavLink, setActiveNavLink] = useState("home");
-  const slides = [hero1, hero2, hero3, hero4, hero5];
+  const [loadedImages, setLoadedImages] = useState(new Set());
+
+  const BASE_URL =
+    "https://event-pdf-crm.s3.ap-south-1.amazonaws.com/wesite-images/";
+  const bannerImages = [
+    "banner-1.jpg",
+    "banner-2.jpg",
+    "banner-3.jpg",
+    "banner-4.jpg",
+    "banner-5.jpg",
+  ];
+  const slides = bannerImages.map((image) => `${BASE_URL}${image}`);
   const totalSlides = slides.length;
 
   const navItems = [
@@ -22,6 +28,22 @@ const HeroBanner = () => {
     { id: "contact", label: "Contact Us", href: "#contact" },
   ];
 
+  // Preload all images and track which ones are loaded
+  useEffect(() => {
+    slides.forEach((slideUrl, index) => {
+      const img = new Image();
+      img.onload = () => {
+        setLoadedImages((prev) => new Set([...prev, index]));
+      };
+      img.onerror = () => {
+        // Still mark as loaded to avoid infinite blur
+        setLoadedImages((prev) => new Set([...prev, index]));
+      };
+      img.src = slideUrl;
+    });
+  }, [slides]);
+
+  // Start slideshow immediately
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -75,7 +97,9 @@ const HeroBanner = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`slide ${index === currentSlide ? "active" : ""}`}
+            className={`slide ${index === currentSlide ? "active" : ""} ${
+              loadedImages.has(index) ? "loaded" : "blurred"
+            }`}
             style={{ backgroundImage: `url(${slide})` }}
           />
         ))}
