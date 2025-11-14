@@ -12,11 +12,11 @@ const HeroBanner = () => {
   const BASE_URL =
     "https://event-pdf-crm.s3.ap-south-1.amazonaws.com/wesite-images/";
   const bannerImages = [
-    "banner-1.jpg",
-    "banner-2.jpg",
-    "banner-3.jpg",
-    "banner-4.jpg",
-    "banner-5.jpg",
+    "1.webp",
+    "2.webp",
+    "3.webp",
+    "4.webp",
+    "5.webp",
   ];
   const slides = bannerImages.map((image) => `${BASE_URL}${image}`);
   const totalSlides = slides.length;
