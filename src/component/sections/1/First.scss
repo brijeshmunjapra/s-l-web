@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+// GT America Trial font - using Inter as fallback since GT America is premium
+// If you have GT America Trial font files, add them via @font-face here
+
+.first-section {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  background-color: #F0EAE0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.first-section-left {
+  width: 31%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+
+  .left-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.first-section-right {
+  width: 66.667%;
+  height: 100%;
+  max-height: 100%;
+  flex: 1;
+  background-color: #F0EAE0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  box-sizing: border-box;
+
+  .headline-text {
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 5rem 4rem 2.5rem 4rem;
+    flex-shrink: 0;
+    min-height: 0;
+    position: relative;
+    z-index: 10;
+
+    .headline-line {
+      font-family: "Bodoni Moda SC", serif;
+      font-size: 3.5rem;
+      font-weight: 400 !important;
+      color: #232323;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+
+      &.headline-line-1 {
+        position: absolute;
+        left: -10%;
+        top: 70%;
+        z-index: 10;
+      }
+
+      &.headline-line-2 {
+        position: absolute;
+        left: 5%;
+        top: 130%;
+        z-index: 10;
+      }
+
+      &.headline-line-3 {
+        position: absolute;
+        left: 15%;
+        top: 190%;
+        z-index: 10;
+      }
+    }
+  }
+
+  .body-text {
+    max-width: 55%;
+    z-index: 2;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: visible;
+    padding: 0 2rem;
+    margin-bottom: 0;
+    padding-top: 0.5rem;
+
+    p {
+      font-family: "GT America Trial", "Inter", -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: #000;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+  }
+
+  .right-image-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 38%;
+    max-width: none;
+    z-index: 1;
+    height: auto;
+    overflow: hidden;
+
+    .right-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .first-section-right {
+    padding: 3rem 4rem;
+
+    .headline-text {
+      .headline-line {
+        font-size: 3.5rem;
+      }
+    }
+
+    .body-text {
+      max-width: 90%;
+    }
+
+    .right-image-container {
+      width: 40%;
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 968px) {
+  .first-section {
+    flex-direction: column;
+  }
+
+  .first-section-left {
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .first-section-right {
+    width: 100%;
+    padding: 3rem 2.5rem;
+    min-height: auto;
+
+    .headline-text {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+
+      .headline-line {
+        font-size: 2.5rem;
+      }
+    }
+
+    .body-text {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .right-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      bottom: auto;
+      right: auto;
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .first-section-right {
+    padding: 2rem 1.5rem;
+
+    .headline-text {
+      .headline-line {
+        font-size: 2rem;
+      }
+    }
+
+    .body-text {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
