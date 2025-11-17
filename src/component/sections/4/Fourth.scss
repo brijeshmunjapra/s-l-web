@@ -1,0 +1,144 @@
+.fourth-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.fourth-section-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.image-row {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+}
+
+.first-row {
+  height: 35vh;
+  min-height: 280px;
+}
+
+.second-row {
+  height: 35vh;
+  min-height: 280px;
+}
+
+.image-row-inner {
+  display: inline-flex;
+  gap: 0.25rem;
+  height: 100%;
+  will-change: transform;
+  padding: 0 0.5rem;
+}
+
+.first-row-inner {
+  animation: scroll-left-to-right 40s linear infinite;
+}
+
+.second-row-inner {
+  animation: scroll-right-to-left 40s linear infinite;
+}
+
+.image-item {
+  flex-shrink: 0;
+  height: 100%;
+  width: calc(100vw / 6);
+  min-width: calc(100vw / 6);
+  overflow: hidden;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+}
+
+@keyframes scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1400px) {
+  .image-item {
+    width: calc(100vw / 5);
+    min-width: calc(100vw / 5);
+  }
+}
+
+@media (max-width: 1200px) {
+  .image-item {
+    width: calc(100vw / 4);
+    min-width: calc(100vw / 4);
+  }
+  
+  .first-row,
+  .second-row {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 968px) {
+  .image-item {
+    width: calc(100vw / 3);
+    min-width: calc(100vw / 3);
+  }
+  
+  .first-row,
+  .second-row {
+    min-height: 200px;
+  }
+  
+  .first-row-inner {
+    animation-duration: 25s;
+  }
+  
+  .second-row-inner {
+    animation-duration: 25s;
+  }
+}
+
+@media (max-width: 640px) {
+  .image-item {
+    width: calc(100vw / 2);
+    min-width: calc(100vw / 2);
+  }
+  
+  .first-row,
+  .second-row {
+    min-height: 180px;
+  }
+  
+  .first-row-inner {
+    animation-duration: 20s;
+  }
+  
+  .second-row-inner {
+    animation-duration: 20s;
+  }
+}
+
