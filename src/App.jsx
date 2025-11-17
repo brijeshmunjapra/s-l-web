@@ -5,6 +5,7 @@ import Third from './component/sections/3/Third'
 import Fourth from './component/sections/4/Fourth'
 import HeroBanner from './component/Hero/HeroBanner'
 import Fifth from './component/sections/5/Fifth'
+import Sixth from './component/sections/6/Sixth'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Third />
       <Fourth />
       <Fifth />
+      <Sixth />
     </>
   )
 }

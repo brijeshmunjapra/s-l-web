@@ -1,0 +1,98 @@
+.sixth-section {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  box-sizing: border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+    z-index: 0;
+  }
+}
+
+.review-content {
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.review-text {
+  font-family: "Belleza", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.15em;
+  margin: 0;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.review-author {
+  text-align: right;
+  font-family: "Belleza", serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-arrow-container {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.carousel-arrow {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+
+  img {
+    width: 106px;
+    height: 14px;
+  }
+}

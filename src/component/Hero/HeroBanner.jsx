@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./HeroBanner.scss";
 import logo from "../../assets/logo.png";
-import leftArrow from "../../assets/hero/left-arrow.svg";
-import rightArrow from "../../assets/hero/right-arrow.svg";
+import leftArrow from "../../assets/left-arrow.svg";
+import rightArrow from "../../assets/right-arrow.svg";
 
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
