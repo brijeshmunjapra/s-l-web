@@ -66,6 +66,12 @@
   max-width: 25%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+
+  &:hover {
+    .couple-photo {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .couple-photo {
@@ -75,6 +81,7 @@
   object-position: center;
   display: block;
   box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
 }
 
 // Responsive adjustments
