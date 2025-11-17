@@ -23,19 +23,18 @@
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 2rem 4rem;
-  background: transparent;
+  align-items: center;
+  padding: 1rem 4rem 2rem 4rem;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(0, 0, 0, 0) 37.02%
+    rgba(255, 255, 255, 0.892) 0%,
+    rgba(0, 0, 0, 0) 100%
   );
 
   .logo-container {
     .logo-img {
-      width: 250px;
-      height: 120px;
+      width: 150px;
+      height: 80px;
       object-fit: contain;
       flex-shrink: 0;
     }
@@ -54,10 +53,10 @@
   }
 
   .nav-links {
+    height: 100% !important;
     display: flex;
     gap: 3rem;
-    align-items: flex-start;
-    margin-top: 1.5rem;
+    align-items: center;
 
     .nav-link {
       font-family: "GT America Trial", "Inter", -apple-system,
