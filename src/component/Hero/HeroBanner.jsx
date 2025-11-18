@@ -112,15 +112,15 @@ const HeroBanner = () => {
         </button>
         <div className="pagination-info">
           <div className="pagination-bottom">
-            <span className="current-slide">
+            {/*<span className="current-slide">
               {String(currentSlide + 1).padStart(2, "0")}
-            </span>
+            </span>*/}
             <button className="next-btn" onClick={nextSlide}>
               <img src={rightArrow} alt="Next" className="arrow-svg" />
             </button>
-            <span className="total-slides">
+            {/*<span className="total-slides">
               {String(totalSlides).padStart(2, "0")}
-            </span>
+            </span>*/}
           </div>
         </div>
       </div>
