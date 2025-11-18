@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Sixth.scss";
 import bgImage from "../../../assets/sixth-section/bg.jpg";
 import leftArrow from "../../../assets/left-arrow.svg";
@@ -6,6 +6,8 @@ import rightArrow from "../../../assets/right-arrow.svg";
 
 const Sixth = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef(null);
 
   const reviews = [
     {
@@ -42,8 +44,39 @@ const Sixth = () => {
     );
   };
 
+  useEffect(() => {
+    // Clear any existing interval first
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
+    // Set up new interval if not paused
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => {
+          const nextIndex = prevIndex === reviews.length - 1 ? 0 : prevIndex + 1;
+          return nextIndex;
+        });
+      }, 4000); // Auto-advance every 4 seconds
+    }
+
+    // Cleanup function
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [isPaused, reviews.length]);
+
   return (
-    <div className="sixth-section" style={{ "--bg-image": `url(${bgImage})` }}>
+    <div
+      className="sixth-section"
+      style={{ "--bg-image": `url(${bgImage})` }}
+      // onMouseEnter={() => setIsPaused(true)}
+      // onMouseLeave={() => setIsPaused(false)}
+    >
       <div className="review-content">
         <p className="review-text" key={`text-${currentIndex}`}>
           {reviews[currentIndex].text}

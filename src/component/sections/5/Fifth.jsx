@@ -6,41 +6,41 @@ import image3 from "../../../assets/fifth-section/3.webp";
 
 const Fifth = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const timeoutRef = useRef(null);
-  const indexRef = useRef(0);
-  const lastUpdateTimeRef = useRef(performance.now());
+  // const timeoutRef = useRef(null);
+  // const indexRef = useRef(0);
+  // const lastUpdateTimeRef = useRef(performance.now());
 
-  useEffect(() => {
-    const ROTATION_INTERVAL = 3000; // Exactly 3000ms between each change
+  // useEffect(() => {
+  //   const ROTATION_INTERVAL = 3000; // Exactly 3000ms between each change
 
-    const scheduleNext = () => {
-      const now = performance.now();
-      const elapsed = now - lastUpdateTimeRef.current;
+  //   const scheduleNext = () => {
+  //     const now = performance.now();
+  //     const elapsed = now - lastUpdateTimeRef.current;
       
-      // Calculate how long to wait to maintain exactly 3 seconds between updates
-      const remainingTime = ROTATION_INTERVAL - elapsed;
-      const waitTime = Math.max(0, remainingTime);
+  //     // Calculate how long to wait to maintain exactly 3 seconds between updates
+  //     const remainingTime = ROTATION_INTERVAL - elapsed;
+  //     const waitTime = Math.max(0, remainingTime);
 
-      timeoutRef.current = setTimeout(() => {
-        const updateTime = performance.now();
-        indexRef.current = (indexRef.current + 1) % 3;
-        setCurrentIndex(indexRef.current);
-        lastUpdateTimeRef.current = updateTime;
-        scheduleNext();
-      }, waitTime);
-    };
+  //     timeoutRef.current = setTimeout(() => {
+  //       const updateTime = performance.now();
+  //       indexRef.current = (indexRef.current + 1) % 3;
+  //       setCurrentIndex(indexRef.current);
+  //       lastUpdateTimeRef.current = updateTime;
+  //       scheduleNext();
+  //     }, waitTime);
+  //   };
 
-    // Initialize
-    lastUpdateTimeRef.current = performance.now();
-    scheduleNext();
+  //   // Initialize
+  //   lastUpdateTimeRef.current = performance.now();
+  //   scheduleNext();
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
-    };
-  }, []); // Empty dependency array ensures this runs only once
+  //   return () => {
+  //     if (timeoutRef.current) {
+  //       clearTimeout(timeoutRef.current);
+  //       timeoutRef.current = null;
+  //     }
+  //   };
+  // }, []); // Empty dependency array ensures this runs only once
 
   const blogs = [
     {
