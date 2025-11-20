@@ -256,3 +256,28 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman'), local('Times');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman'), local('Times');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  font-synthesis: weight;
+}
+
+@font-face {
+  font-family: 'Beauty Ballerina';
+  src: url('/fonts/Beauty_Ballerina.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
