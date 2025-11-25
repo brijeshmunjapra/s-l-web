@@ -14,7 +14,7 @@ function App() {
       <HeroBanner />
       <First />
       <Second />
-      <Third />
+      {/* <Third /> */}
       <Fourth />
       <Fifth />
       <Sixth />
