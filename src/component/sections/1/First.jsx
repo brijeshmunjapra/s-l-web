@@ -3,7 +3,7 @@ import "./First.scss";
 import leftImage from "../../../assets/first-section/left.jpg";
 import rightImage from "../../../assets/first-section/right.jpg";
 import cornerSvg from "../../../assets/first-section/right-image-left-top-corner.svg";
-import topImage from "../../../assets/first-section/masterpiece.svg";
+import topImage from "../../../assets/first-section/top.svg";
 
 const First = () => {
   return (
@@ -13,10 +13,6 @@ const First = () => {
       </div>
       <div className="first-section-top">
         <div className="top-content">
-          <div className="top-content-text">
-            <div className="top-content-text-line-1">Where Memories</div>
-            <div className="top-content-text-line-2">Find their Modern</div>
-          </div>
           <img src={topImage} alt="Top" />
         </div>
       </div>
