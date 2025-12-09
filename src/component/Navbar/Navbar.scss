@@ -2,7 +2,10 @@
 // GT America Trial font - using Inter as fallback since GT America is premium
 
 .navbar {
-  position: relative;
+  position: absolute; // Always absolute so content can go behind it
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: 100;
   padding: 1rem 4rem 2rem 4rem;
