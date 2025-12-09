@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./HeroBanner.scss";
-import logo from "../../assets/logo.png";
 import leftArrow from "../../assets/left-arrow.svg";
 import rightArrow from "../../assets/right-arrow.svg";
 
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeNavLink, setActiveNavLink] = useState("home");
   const [loadedImages, setLoadedImages] = useState(new Set());
 
   const BASE_URL =
@@ -20,13 +18,6 @@ const HeroBanner = () => {
   ];
   const slides = bannerImages.map((image) => `${BASE_URL}${image}`);
   const totalSlides = slides.length;
-
-  const navItems = [
-    { id: "home", label: "Home", href: "#home" },
-    { id: "about", label: "About Us", href: "#about" },
-    { id: "gallery", label: "Gallery", href: "#gallery" },
-    { id: "contact", label: "Contact Us", href: "#contact" },
-  ];
 
   // Preload all images and track which ones are loaded
   useEffect(() => {
@@ -60,38 +51,8 @@ const HeroBanner = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  const handleNavClick = (e, navId) => {
-    e.preventDefault();
-    setActiveNavLink(navId);
-  };
-
   return (
     <div className="hero-banner">
-      {/* Navigation Bar */}
-      <nav className="hero-nav">
-        <div className="logo-container">
-          <img
-            src={logo}
-            alt="Shade & Light Photo Studio"
-            className="logo-img"
-          />
-        </div>
-        <div className="nav-links">
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              className={`nav-link ${
-                activeNavLink === item.id ? "active" : ""
-              }`}
-              onClick={(e) => handleNavClick(e, item.id)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       {/* Slides Container */}
       <div className="slides-container">
         {slides.map((slide, index) => (

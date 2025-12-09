@@ -52,8 +52,8 @@
 .image-item {
   flex-shrink: 0;
   height: 100%;
-  width: calc(100vw / 6);
-  min-width: calc(100vw / 6);
+  width: calc(100% / 6);
+  min-width: calc(100% / 6);
   overflow: hidden;
   position: relative;
   
@@ -87,15 +87,15 @@
 // Responsive adjustments
 @media (max-width: 1400px) {
   .image-item {
-    width: calc(100vw / 5);
-    min-width: calc(100vw / 5);
+    width: calc(100% / 5);
+    min-width: calc(100% / 5);
   }
 }
 
 @media (max-width: 1200px) {
   .image-item {
-    width: calc(100vw / 4);
-    min-width: calc(100vw / 4);
+    width: calc(100% / 4);
+    min-width: calc(100% / 4);
   }
   
   .first-row,
@@ -106,8 +106,8 @@
 
 @media (max-width: 968px) {
   .image-item {
-    width: calc(100vw / 3);
-    min-width: calc(100vw / 3);
+    width: calc(100% / 3);
+    min-width: calc(100% / 3);
   }
   
   .first-row,
@@ -126,8 +126,8 @@
 
 @media (max-width: 640px) {
   .image-item {
-    width: calc(100vw / 2);
-    min-width: calc(100vw / 2);
+    width: calc(100% / 2);
+    min-width: calc(100% / 2);
   }
   
   .first-row,

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 import logo from "../../assets/logo.png";
 import fbIcon from "../../assets/footer/fb.svg";
@@ -11,28 +12,30 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src={logo} alt="Shade & Light Photo Studio" />
+          <Link to="/">
+            <img src={logo} alt="Shade & Light Photo Studio" />
+          </Link>
         </div>
 
         <nav className="footer-nav">
-          <a href="#home" className="nav-link">
+          <Link to="/" className="nav-link">
             HOME
-          </a>
-          <a href="#about" className="nav-link">
+          </Link>
+          <Link to="/about" className="nav-link">
             ABOUT
-          </a>
-          <a href="#services" className="nav-link">
+          </Link>
+          <Link to="/services" className="nav-link">
             SERVICES
-          </a>
-          <a href="#portfolio" className="nav-link">
+          </Link>
+          <Link to="/portfolio" className="nav-link">
             PORTFOLIO
-          </a>
-          <a href="#blog" className="nav-link">
+          </Link>
+          <Link to="/blog" className="nav-link">
             BLOG
-          </a>
-          <a href="#contact" className="nav-link">
+          </Link>
+          <Link to="/contact" className="nav-link">
             CONTACT
-          </a>
+          </Link>
         </nav>
 
         <div className="footer-bottom">
