@@ -7,6 +7,7 @@ import HeroBanner from './component/Hero/HeroBanner'
 import Fifth from './component/sections/5/Fifth'
 import Sixth from './component/sections/6/Sixth'
 import Seventh from './component/sections/7/Seventh'
+import Footer from './component/Footer/Footer'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Fifth />
       <Sixth />
       <Seventh />
+      <Footer />
     </>
   )
 }

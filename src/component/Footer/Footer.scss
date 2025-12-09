@@ -1,0 +1,124 @@
+.footer {
+  background-color: #ffffff;
+  padding: 60px 20px 40px;
+  font-family: 'Phetsarath', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    padding-bottom: 30px;
+  }
+  
+  .footer-logo {
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    
+    img {
+      height: auto;
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+  
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    
+    .nav-link {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      font-family: 'Phetsarath', sans-serif;
+      
+      &:hover {
+        color: #B58B61;
+      }
+    }
+  }
+  
+  .footer-bottom {
+    position: relative;
+    width: 100%;
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+    }
+  }
+  
+  .footer-copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Phetsarath', sans-serif;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px 60px;
+    
+    .footer-nav {
+      gap: 20px;
+      
+      .nav-link {
+        font-size: 14px;
+      }
+    }
+    
+    .footer-social {
+      gap: 15px;
+      
+      .social-link {
+        width: 35px;
+        height: 35px;
+        
+        img {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+    
+    .footer-copyright {
+      position: static;
+      margin-top: 20px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
