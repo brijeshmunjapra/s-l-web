@@ -1,6 +1,8 @@
 import React from "react";
 import "./About.scss";
 import image from "../../assets/sixth-section/bg.jpg";
+import HowWeStarted from "../../component/sections/about-us/how-we-started/HowWeStarted";
+import FeedBack from "../../component/sections/about-us/feedback/FeedBack";
 
 const About = () => {
   return (
@@ -17,6 +19,8 @@ const About = () => {
       <div className="about-image">
         <img src={image} alt="About Us" />
       </div>
+      <HowWeStarted />
+      <FeedBack />
     </div>
   );
 };
