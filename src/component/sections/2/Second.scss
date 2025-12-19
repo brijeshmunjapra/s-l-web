@@ -11,6 +11,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 .second-section-content {
@@ -46,7 +47,7 @@
   font-size: 0.6rem !important;
   font-weight: 400;
   color: #8F95A3;
-  margin: 1rem 10rem 0 10rem !important;
+  margin: 1rem 2rem 0 2rem !important;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }

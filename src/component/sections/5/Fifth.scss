@@ -7,10 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 4rem;
+  // padding: 6rem 4rem;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 .fifth-section-content {
@@ -19,7 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 .text-container {
@@ -59,6 +60,7 @@
   position: relative;
   min-height: 500px; // Maintain consistent height during animation
   overflow: hidden; // Hide items that slide outside
+  overflow-x: hidden; // Ensure no horizontal scroll
 }
 
 .blog-item {

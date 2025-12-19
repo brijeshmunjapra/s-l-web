@@ -13,7 +13,7 @@ const Seventh = () => {
     <div>
       <div className="seventh-section-container">
         <div className="seventh-section-header">
-          <h2 className="seventh-section-heading">FOLLOW US ON INSTAGRAM</h2>
+          <h2 className="seventh-section-heading section-heading">FOLLOW US ON INSTAGRAM</h2>
         </div>
         <div className="seventh-section-images">
           <div className="seventh-section-images-column">

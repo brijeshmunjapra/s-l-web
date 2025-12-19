@@ -77,7 +77,7 @@ const Fifth = () => {
     <div className="fifth-section">
       <div className="fifth-section-content">
         <div className="text-container">
-          <h1 className="main-heading">Stories & Sparks</h1>
+          <h1 className="main-heading section-heading">Stories & Sparks</h1>
           <h2 className="sub-heading">Our latest Blogs</h2>
         </div>
         <div 
