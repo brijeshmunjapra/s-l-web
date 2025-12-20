@@ -9,10 +9,10 @@ const navItems = [
   { id: "gallery", label: "Gallery", path: "/gallery" },
   { id: "contact", label: "Contact Us", path: "/contact" },
 ];
-
 const Navbar = () => {
   const location = useLocation();
   const [activeNavLink, setActiveNavLink] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomePage = location.pathname === "/";
 
   // Update active nav link based on current route
@@ -28,6 +28,11 @@ const Navbar = () => {
 
   const handleNavClick = (navId) => {
     setActiveNavLink(navId);
+    setIsMobileMenuOpen(false); // Close mobile menu when a link is clicked
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -42,7 +47,20 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        <div className="nav-links">
+
+        {/* Hamburger Menu Button */}
+        <button
+          className={`hamburger-menu ${isMobileMenuOpen ? "open" : ""}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Desktop Navigation */}
+        <div className="nav-links desktop-nav">
           {navItems.map((item) => (
             <Link
               key={item.id}
@@ -55,6 +73,24 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
+        </div>
+
+        {/* Mobile Navigation Overlay */}
+        <div className={`mobile-nav-overlay ${isMobileMenuOpen ? "open" : ""}`}>
+          <div className="mobile-nav-content">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                to={item.path}
+                className={`nav-link mobile-nav-link ${
+                  activeNavLink === item.id ? "active" : ""
+                }`}
+                onClick={() => handleNavClick(item.id)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

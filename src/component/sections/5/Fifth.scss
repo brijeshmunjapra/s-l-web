@@ -2,16 +2,27 @@
 
 .fifth-section {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; // Allow content to determine height
   background-color: #F0EAE0;
   display: flex;
-  align-items: center;
+  align-items: self-end;
   justify-content: center;
-  // padding: 6rem 4rem;
+  padding: 1.5rem 1rem;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+
+  // Responsive padding and height
+  @media (min-width: 768px) {
+    padding: 3rem 2rem;
+    min-height: 100vh;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 4rem 4rem;
+    min-height: 100vh;
+  }
 }
 
 .fifth-section-content {
@@ -20,7 +31,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+
+  // Responsive gap
+  @media (min-width: 768px) {
+    gap: 2rem;
+  }
 }
 
 .text-container {
@@ -28,11 +44,28 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
+  @media (max-width: 360px) {
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    width: 95%;
+    max-width: 280px;
+    padding: 0 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 25px !important;
+  }
 }
 
 .fifth-section .main-heading {
   font-family: "Playfair Display", serif !important;
-  font-size: 3rem;
+  font-size: 1.75rem;
   font-weight: 400;
   color: #2a2a2a;
   margin: 0;
@@ -40,16 +73,34 @@
   line-height: 1.25;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+
+  // Responsive font sizes
+  @media (min-width: 480px) {
+    font-size: 2.25rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
 }
 
 .sub-heading {
   font-family: "Phetsarath", sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: #8f95a3;
   margin: 0;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+
+  // Responsive font size
+  @media (min-width: 768px) {
+    font-size: 0.875rem;
+  }
 }
 
 .blogs-container {
@@ -58,26 +109,66 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  min-height: 500px; // Maintain consistent height during animation
-  overflow: hidden; // Hide items that slide outside
-  overflow-x: hidden; // Ensure no horizontal scroll
+  min-height: 350px; // Reduced for mobile
+  overflow: hidden;
+  overflow-x: hidden;
+
+  // Responsive height
+  @media (min-width: 768px) {
+    min-height: 500px;
+  }
+
+  // Mobile specific styles
+  &.blogs-container-mobile {
+    justify-content: center;
+    min-height: 280px;
+
+    @media (min-width: 480px) {
+      min-height: 320px;
+    }
+  }
 }
 
 .blog-item {
   flex: 1;
-  width: 20%; // Maintain original width percentage
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.75rem;
   position: relative;
   opacity: 1;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
               width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+              height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease-in-out;
+  will-change: transform, opacity;
   flex-shrink: 0;
+
+  // Mobile specific item styles
+  &.blog-item-mobile {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+    gap: 1rem;
+    animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    // Directional animations based on navigation
+    &[data-slide-direction="left"] {
+      animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    &[data-slide-direction="right"] {
+      animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @media (min-width: 480px) {
+      max-width: 350px;
+    }
+  }
 }
 
 // Position classes for z-index management during animation
@@ -98,17 +189,53 @@
 }
 
 .blog-image {
-  height: 25% !important;
-  width: 60%;
+  height: 200px !important;
+  width: 70%;
   object-fit: cover;
   display: block;
   aspect-ratio: 3 / 4 !important;
   border-radius: 0 !important;
   align-self: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
+
+  // Responsive sizing
+  @media (min-width: 480px) {
+    height: 250px !important;
+    width: 65%;
+  }
+
+  @media (min-width: 768px) {
+    height: 25% !important;
+    width: 60%;
+  }
 
   &-middle {
     height: 35% !important;
     width: 80% !important;
+
+    @media (min-width: 768px) {
+      height: 35% !important;
+      width: 80% !important;
+    }
+  }
+
+  // Mobile specific image
+  &.blog-image-mobile {
+    height: 240px !important;
+    width: 100%;
+    max-width: 240px;
+
+    @media (min-width: 480px) {
+      height: 280px !important;
+      max-width: 280px;
+    }
+
+    @media (min-width: 768px) {
+      height: 25% !important;
+      width: 60%;
+      max-width: none;
+    }
   }
 }
 
@@ -122,10 +249,226 @@
   padding: 0;
   letter-spacing: 0.02em;
   line-height: 1.5;
-  width: 60%;
-  text-align: left;
+  width: 70%;
+  text-align: center;
+
+  // Responsive width and alignment
+  @media (min-width: 768px) {
+    width: 60%;
+    text-align: left;
+  }
 }
 
 .blog-image-container:has(.blog-image-middle) .blog-caption {
   width: 80%;
+
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+}
+
+// Mobile specific caption
+.blog-caption-mobile {
+  width: 100%;
+  text-align: center;
+  font-size: 0.875rem;
+
+  @media (min-width: 480px) {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 60%;
+    text-align: left;
+    font-size: 0.75rem;
+  }
+}
+
+// Mobile font size for section heading
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 25px !important;
+  }
+}
+
+// Mobile Navigation Styles
+.mobile-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    display: none; // Hide on desktop
+  }
+}
+
+.nav-btn {
+    background: #e5ddd1;
+    border: none;
+    /* border-radius: 50%; */
+    width: 85px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #2a2a2a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+
+  &:hover {
+    background: rgba(42, 42, 42, 0.8);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &-prev,
+  &-next {
+    font-weight: 300;
+  }
+
+  .arrow-svg {
+    width: 80px;
+    height: 37px;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.mobile-indicators {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(42, 42, 42, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.active {
+    background: #2a2a2a;
+    transform: scale(1.2);
+  }
+
+  &:hover {
+    background: rgba(42, 42, 42, 0.5);
+  }
+}
+
+// Enhanced slide animation keyframes for mobile blog images
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8) rotateY(15deg);
+    filter: blur(2px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateX(30px) scale(0.9) rotateY(5deg);
+    filter: blur(1px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateX(5px) scale(1.02) rotateY(-2deg);
+    filter: blur(0px);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(-2px) scale(1.01) rotateY(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.8) rotateY(-15deg);
+    filter: blur(2px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateX(-30px) scale(0.9) rotateY(-5deg);
+    filter: blur(1px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateX(-5px) scale(1.02) rotateY(2deg);
+    filter: blur(0px);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(2px) scale(1.01) rotateY(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+// Additional slide animation for desktop carousel
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Enhanced bounce effect for smoother transitions
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// Floating animation for subtle movement
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
