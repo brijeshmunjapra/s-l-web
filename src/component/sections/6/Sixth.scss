@@ -1,6 +1,6 @@
 .sixth-section {
   width: 100%;
-  height: 60vh;
+  height: 100vh;
   position: relative;
   background-size: cover;
   background-position: center;
@@ -29,6 +29,25 @@
   }
 }
 
+// Mobile responsive styles
+@media (max-width: 768px) {
+  .sixth-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+
+    &::before {
+      background-attachment: scroll; // Fixed attachment can cause issues on mobile
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .sixth-section {
+    padding: 1.5rem 1rem;
+  }
+}
+
 .review-content {
   text-align: center;
   color: white;
@@ -38,6 +57,21 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+// Mobile responsive styles for review content
+@media (max-width: 768px) {
+  .review-content {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-content {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .review-text {
@@ -61,6 +95,33 @@
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.5s ease-in-out;
+}
+
+// Mobile responsive styles for text
+@media (max-width: 768px) {
+  .review-text {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+  }
+
+  .review-author {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-text {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  .review-author {
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
 }
 
 @keyframes fadeIn {
@@ -92,9 +153,39 @@
   border: none;
   cursor: pointer;
   z-index: 1;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   img {
     width: 80px;
     height: 10px;
+  }
+}
+
+// Mobile responsive styles for arrows
+@media (max-width: 768px) {
+  .carousel-arrow-container {
+    bottom: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .carousel-arrow img {
+    width: 60px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-arrow-container {
+    bottom: 1rem;
+    padding: 0 1rem;
+  }
+
+  .carousel-arrow img {
+    width: 50px;
+    height: 7px;
   }
 }

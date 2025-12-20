@@ -3,9 +3,35 @@ import "./Fifth.scss";
 import image1 from "../../../assets/fifth-section/1.webp";
 import image2 from "../../../assets/fifth-section/2.webp";
 import image3 from "../../../assets/fifth-section/3.webp";
+import leftArrow from "../../../assets/left-arrow.svg";
+import rightArrow from "../../../assets/right-arrow.svg";
 
 const Fifth = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [slideDirection, setSlideDirection] = useState('right'); // 'left' or 'right'
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Navigation functions for mobile
+  const nextBlog = () => {
+    setSlideDirection('right');
+    setCurrentIndex((prev) => (prev + 1) % blogs.length);
+  };
+
+  const prevBlog = () => {
+    setSlideDirection('left');
+    setCurrentIndex((prev) => (prev - 1 + blogs.length) % blogs.length);
+  };
   // const timeoutRef = useRef(null);
   // const indexRef = useRef(0);
   // const lastUpdateTimeRef = useRef(performance.now());
@@ -64,8 +90,12 @@ const Fifth = () => {
   ];
 
   // Calculate which position each blog should be in based on currentIndex
-  // Pattern: 1→2, 2→3, 3→1 (rotating right)
+  // On mobile, just show current image, on desktop use carousel
   const getBlogPosition = (blogId) => {
+    if (isMobile) {
+      return blogId === currentIndex ? 1 : 0; // 1 = visible, 0 = hidden
+    }
+    // Desktop carousel logic
     // blog0 starts at position 0, blog1 at 1, blog2 at 2
     // When currentIndex = 0: blog0→0, blog1→1, blog2→2
     // When currentIndex = 1: blog0→1, blog1→2, blog2→0 (rotated right once)
@@ -77,31 +107,46 @@ const Fifth = () => {
     <div className="fifth-section">
       <div className="fifth-section-content">
         <div className="text-container">
-          <h1 className="main-heading">Stories & Sparks</h1>
+          <h1 className="main-heading section-heading">Stories & Sparks</h1>
           <h2 className="sub-heading">Our latest Blogs</h2>
         </div>
-        <div 
-          className="blogs-container"
+        <div
+          className={`blogs-container ${isMobile ? 'blogs-container-mobile' : ''}`}
           data-current-index={currentIndex}
         >
           {blogs.map((blog) => {
             const targetPosition = getBlogPosition(blog.id);
-            // Calculate transform to slide from natural flex position to target
-            // Natural positions: blog0→left(0), blog1→middle(1), blog2→right(2)
-            // With space-between and flex: 1, items are evenly distributed
-            // Each slot movement is approximately equal to the spacing between items
+
+            if (isMobile) {
+              // On mobile, only show the current blog
+              if (targetPosition !== 1) return null;
+
+              return (
+                <div
+                  key={blog.id}
+                  className="blog-item blog-item-mobile"
+                  data-blog-id={blog.id}
+                  data-position={targetPosition}
+                  data-slide-direction={slideDirection}
+                >
+                  <div className="blog-image-container">
+                    <img
+                      src={blog.image}
+                      alt={blog.alt}
+                      className="blog-image blog-image-mobile"
+                    />
+                    <p className="blog-caption blog-caption-mobile">{blog.caption}</p>
+                  </div>
+                </div>
+              );
+            }
+
+            // Desktop carousel logic
             const currentFlexPos = blog.id; // 0, 1, or 2
             const slotOffset = targetPosition - currentFlexPos;
-            
-            // Use transform for smooth sliding animation
-            // translateX(%) moves relative to element width, but with flex: 1,
-            // items have similar widths, so this approximates slot-to-slot movement
-            // Adjust multiplier for smooth sliding (test and tune as needed)
             const translateX = slotOffset * 100; // Move by 100% of item width per slot
-            
-            // Center position (1) always gets the big size, regardless of which image
             const isCenterPosition = targetPosition === 1;
-            
+
             return (
               <div
                 key={blog.id}
@@ -124,6 +169,40 @@ const Fifth = () => {
             );
           })}
         </div>
+        {isMobile && (
+          <div className="mobile-navigation">
+            <button
+              className="nav-btn nav-btn-prev"
+              onClick={prevBlog}
+              aria-label="Previous blog"
+            >
+              <img src={leftArrow} alt="Previous" className="arrow-svg" />
+            </button>
+            <div className="mobile-indicators">
+              {blogs.map((_, index) => (
+                <span
+                  key={index}
+                  className={`indicator ${index === currentIndex ? 'active' : ''}`}
+                  onClick={() => {
+                    if (index > currentIndex) {
+                      setSlideDirection('right');
+                    } else if (index < currentIndex) {
+                      setSlideDirection('left');
+                    }
+                    setCurrentIndex(index);
+                  }}
+                />
+              ))}
+            </div>
+            <button
+              className="nav-btn nav-btn-next"
+              onClick={nextBlog}
+              aria-label="Next blog"
+            >
+              <img src={rightArrow} alt="Next" className="arrow-svg" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

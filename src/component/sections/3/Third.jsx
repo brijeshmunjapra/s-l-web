@@ -19,7 +19,7 @@ const Third = () => {
         
         <div className='center-content'>
           <p className='book-session-text'>BOOK A SESSION NOW</p>
-          <h1 className='main-heading'>
+          <h1 className='main-heading section-heading'>
             Ready To Transform Everyday<br />
             Moment Into Timeless<br />
             Memories?
