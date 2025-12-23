@@ -16,7 +16,7 @@ const Fifth = React.memo(() => {
   //   const scheduleNext = () => {
   //     const now = performance.now();
   //     const elapsed = now - lastUpdateTimeRef.current;
-      
+
   //     // Calculate how long to wait to maintain exactly 3 seconds between updates
   //     const remainingTime = ROTATION_INTERVAL - elapsed;
   //     const waitTime = Math.max(0, remainingTime);
@@ -90,7 +90,9 @@ const Fifth = React.memo(() => {
       <div className="fifth-section-content">
         <div className="text-container">
           <h1 className="main-heading">Stories & Sparks</h1>
-          <h2 className="sub-heading">Our latest Blogs</h2>
+          <h2 className="sub-heading">WE'RE EXCITED TO PHOTOGRAPH YOUR FAMILY, MATERNITY MOMENTS,OR SPECIAL MILESTONES.
+            PLEASE LEAVE A MESSAGE BELOW,
+            AND WE’LL BE IN TOUCH SOON.</h2>
         </div>
         <div
           className="blogs-container"
