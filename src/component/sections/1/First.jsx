@@ -6,10 +6,11 @@ import leftImage from "../../../assets/first-section/left.jpg";
 import rightImage from "../../../assets/first-section/right.jpg";
 import cornerSvg from "../../../assets/first-section/right-image-left-top-corner.svg";
 import topImage from "../../../assets/first-section/top.svg";
-import { gsap } from "gsap";
+// import { gsap } from "gsap";
 
 const First = React.memo(() => {
   const ref = useRef(null);
+  const topImageRef = useRef(null);
   const [animationKey, setAnimationKey] = useState(0);
   const [lastScrollDirection, setLastScrollDirection] = useState("down");
 
@@ -145,6 +146,6 @@ const First = React.memo(() => {
     </div>
   );
 });
-});
+
 
 export default First;
