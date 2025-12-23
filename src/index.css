@@ -1,6 +1,7 @@
 html {
   overflow-x: hidden;
   width: 100%;
+  scroll-behavior: auto; /* Let Lenis handle scroll behavior */
 }
 
 body {
@@ -10,4 +11,77 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
+  /* Ensure smooth scrolling doesn't interfere with Lenis */
+  -webkit-overflow-scrolling: auto;
 }
+
+/* Lenis smooth scrolling styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Performance optimizations for smooth scrolling */
+html.lenis {
+  /* Optimize scrolling performance */
+  -webkit-overflow-scrolling: touch;
+}
+
+.lenis.lenis-smooth * {
+  /* Only apply containment to specific elements that need it */
+  /* Removed aggressive containment that was causing elements to disappear */
+}
+
+/* Prevent scroll jank during animations */
+.lenis.lenis-smooth {
+  /* Use passive listeners for better performance */
+  touch-action: pan-y;
+}
+
+/* GPU acceleration for transform-heavy elements */
+[data-lenis-prevent] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Performance hints for animated elements */
+.fourth-section .image-row-inner {
+  will-change: transform;
+  contain: layout style;
+}
+
+/* Optimize images and interactive elements for smooth scrolling */
+img, video, canvas, iframe {
+  /* Prevent images from causing scroll jank */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  /* Only apply GPU acceleration when needed */
+  will-change: auto;
+}
+
+/* Prevent hover effects from interfering with smooth scrolling */
+* {
+  /* Use GPU-accelerated transitions only when necessary */
+  transition-property: none;
+}
+
+*:hover,
+*:focus,
+*:active {
+  /* Re-enable transitions only on interaction */
+  transition-property: all;
+}
+
+/* CSS animations removed from fourth section - now using JavaScript requestAnimationFrame */
