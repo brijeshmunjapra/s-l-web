@@ -6,6 +6,7 @@ import leftImage from "../../../assets/first-section/left.jpg";
 import rightImage from "../../../assets/first-section/right.jpg";
 import cornerSvg from "../../../assets/first-section/right-image-left-top-corner.svg";
 import topImage from "../../../assets/first-section/top.svg";
+import { gsap } from "gsap";
 
 const First = React.memo(() => {
   const ref = useRef(null);
@@ -96,7 +97,7 @@ const First = React.memo(() => {
         animate={isInView ? "visible" : "hidden"}
       >
         <div className="top-content">
-          <img src={topImage} alt="Top" />
+          <img ref={topImageRef} src={topImage} alt="Top" />
         </div>
       </motion.div>
 
@@ -143,6 +144,7 @@ const First = React.memo(() => {
       </motion.div>
     </div>
   );
+});
 });
 
 export default First;

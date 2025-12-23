@@ -22,3 +22,40 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# System files and directories (Windows)
+AppData/
+Application Data/
+Contacts/
+CrossDevice/
+Downloads/
+Favorites/
+IntelGraphicsProfiles/
+Links/
+NTUSER.DAT*
+OneDrive/
+Saved Games/
+Searches/
+Cookies/
+Documents/
+Local Settings/
+My Documents/
+NetHood/
+PrintHood/
+Recent/
+SendTo/
+Start Menu/
+Templates/
+battery-report.html
+ntuser.*
+.codegeex/
+.conda/
+.config/
+.continue/
+.cursor/
+.env
+.gitconfig
+.gk/
+.lesshst
+.ssh/
+.yarnrc
