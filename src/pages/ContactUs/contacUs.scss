@@ -1,0 +1,131 @@
+.contact-wrapper {
+    background: #f0eae0;
+    padding: 90px 60px;
+
+    /* Reduce padding on large screens */
+    @media (min-width: 1200px) {
+      padding: 60px 40px;
+    }
+
+    /* Remove padding on extra large screens */
+    @media (min-width: 1600px) {
+      padding: 40px 20px;
+    }
+  }
+
+  .contact-inner {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 50px;
+    align-items: center;
+  }
+  
+  /* IMAGE */
+  .contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contact-image{
+    height: 600px;
+
+    /* Increase height on large screens */
+    @media (min-width: 1200px) {
+      height: 600px;
+    }
+
+    /* Further increase height on extra large screens */
+    @media (min-width: 1600px) {
+      height: 750px;
+    }
+  }
+  
+  /* CONTENT */
+  .contact-content {
+    h2 {
+      font-family: "Leky Calgria", serif;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #1f1f1f;
+      margin-bottom: 18px;
+    }
+
+    p {
+      font-family: "Phetsarath", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      line-height: 1.4;
+      color: #8F95A3;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    text-transform: uppercase;
+  
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-family: "CrimsonText", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      font-family: "Times New Roman", sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 10px;
+      margin-bottom: 22px;
+      border: none;
+      background: #f8f6f1;
+      outline: none;
+      transition: border 0.3s ease;
+
+      &:focus {
+        border: 1px solid #1f1f1f;
+      }
+
+      &::placeholder {
+        color: #d6d5d1;
+      }
+    }
+
+    textarea {
+      height: 90px;
+      resize: none;
+    }
+
+    button {
+      align-self: center;
+      margin-top: 10px;
+      padding: 12px 36px;
+      font-family: "Rosehot", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      border: 1px solid #1f1f1f;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #1f1f1f;
+        color: #fff;
+      }
+    }
+  }
+  

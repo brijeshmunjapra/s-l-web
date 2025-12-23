@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Sixth.scss";
-import bgImage from "../../../assets/sixth-section/bg.jpg";
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
 
-const Sixth = () => {
+const Sixth = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const intervalRef = useRef(null);
-
+  const sectionRef = useRef(null);
+  const bgRef = useRef(null);
+  
   const reviews = [
     {
       id: 0,
@@ -45,14 +47,67 @@ const Sixth = () => {
   };
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current && bgRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Calculate when the sixth section is in view
+        const sectionTop = rect.top + scrollY;
+        const sectionBottom = sectionTop + rect.height;
+
+        // Show background when section is in viewport
+        if (scrollY >= sectionTop - windowHeight && scrollY <= sectionBottom) {
+          bgRef.current.style.opacity = '1';
+          bgRef.current.style.visibility = 'visible';
+        } else {
+          bgRef.current.style.opacity = '0';
+          bgRef.current.style.visibility = 'hidden';
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+  useEffect(() => {
     // Clear any existing interval first
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
-    // Set up new interval if not paused
-    if (!isPaused) {
+    // Set up new interval only if visible and not paused
+    if (isVisible && !isPaused) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => {
           const nextIndex = prevIndex === reviews.length - 1 ? 0 : prevIndex + 1;
@@ -68,15 +123,20 @@ const Sixth = () => {
         intervalRef.current = null;
       }
     };
-  }, [isPaused, reviews.length]);
+  }, [isVisible, isPaused, reviews.length]);
 
   return (
-    <div
-      className="sixth-section"
-      style={{ "--bg-image": `url(${bgImage})` }}
-      // onMouseEnter={() => setIsPaused(true)}
-      // onMouseLeave={() => setIsPaused(false)}
-    >
+    <>
+      <div
+        ref={bgRef}
+        className="sixth-bg-fixed"
+      />
+      <div
+        ref={sectionRef}
+        className="sixth-section"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
       <div className="review-content">
         <p className="review-text" key={`text-${currentIndex}`}>
           {reviews[currentIndex].text}
@@ -102,7 +162,8 @@ const Sixth = () => {
         </button>
       </div>
     </div>
+    </>
   );
-};
+});
 
 export default Sixth;
