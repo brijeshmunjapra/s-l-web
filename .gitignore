@@ -1,61 +1,73 @@
-# Logs
-logs
-*.log
+# Dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Build outputs
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# System files and directories (Windows)
+# Windows system files
 AppData/
 Application Data/
 Contacts/
 CrossDevice/
+Documents/
 Downloads/
 Favorites/
 IntelGraphicsProfiles/
 Links/
-NTUSER.DAT*
-OneDrive/
-Saved Games/
-Searches/
-Cookies/
-Documents/
 Local Settings/
 My Documents/
 NetHood/
+OneDrive/
 PrintHood/
 Recent/
+Saved Games/
+Searches/
 SendTo/
 Start Menu/
 Templates/
+Cookies/
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini
 battery-report.html
-ntuser.*
+
+# Cursor and other dev tools
+.cursor/
 .codegeex/
+.continue/
+.gk/
+.android/
 .conda/
 .config/
-.continue/
-.cursor/
-.env
-.gitconfig
-.gk/
-.lesshst
+.mamba/
 .ssh/
+.lesshst
 .yarnrc
+.gitconfig
