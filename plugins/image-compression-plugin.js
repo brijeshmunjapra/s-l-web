@@ -137,7 +137,7 @@ export default function imageCompressionPlugin(options = {}) {
           });
           break;
 
-        default:
+        default: {
           // For other formats, try to convert to WebP with better compression
           sharpInstance = sharpInstance.webp({
             quality: quality,
@@ -147,6 +147,7 @@ export default function imageCompressionPlugin(options = {}) {
           await sharpInstance.toFile(newPath);
           fs.unlinkSync(imagePath); // Remove original
           return { compressed: true, savedBytes: originalSize - fs.statSync(newPath).size };
+        }
       }
 
       // Process the image

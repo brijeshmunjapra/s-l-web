@@ -12,7 +12,7 @@ const HowWeStarted = () => {
           <img src={OurStory} alt="Our Story" />
           <div className="how-we-started-left-content">
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
@@ -20,7 +20,7 @@ const HowWeStarted = () => {
               electronic types.
             </div>
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
@@ -28,7 +28,7 @@ const HowWeStarted = () => {
               electronic types.
             </div>
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book. It has
@@ -36,7 +36,7 @@ const HowWeStarted = () => {
               electronic types.
             </div>
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s.
             </div>

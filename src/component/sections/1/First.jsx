@@ -11,7 +11,6 @@ import topImage from "../../../assets/first-section/top.svg";
 const First = React.memo(() => {
   const ref = useRef(null);
   const topImageRef = useRef(null);
-  const [animationKey, setAnimationKey] = useState(0);
   const [lastScrollDirection, setLastScrollDirection] = useState("down");
 
   // Track scroll direction
@@ -35,13 +34,6 @@ const First = React.memo(() => {
     margin: "-50px",
     amount: 0.1,
   });
-
-  // Trigger new animation when section becomes visible
-  useEffect(() => {
-    if (isInView) {
-      setAnimationKey(prev => prev + 1);
-    }
-  }, [isInView]);
 
   // Dynamic variants based on scroll direction
   const imageVariants = {
@@ -81,7 +73,6 @@ const First = React.memo(() => {
   return (
     <div ref={ref} className="first-section">
       <motion.div
-        key={`left-${animationKey}`}
         className="first-section-left"
         variants={imageVariants}
         initial="hidden"
@@ -91,7 +82,6 @@ const First = React.memo(() => {
       </motion.div>
 
       <motion.div
-        key={`top-${animationKey}`}
         className="first-section-top"
         variants={imageVariants}
         initial="hidden"
@@ -124,7 +114,6 @@ const First = React.memo(() => {
       </div>
 
       <motion.div
-        key={`right-${animationKey}`}
         className="first-section-right"
         variants={imageVariants}
         initial="hidden"
@@ -133,7 +122,6 @@ const First = React.memo(() => {
         <div className="right-image-wrapper">
           <img src={rightImage} alt="Right" />
           <motion.div
-            key={`corner-${animationKey}`}
             className="corner-svg"
             variants={cornerVariants}
             initial="hidden"

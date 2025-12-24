@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../assets/logo.png";
@@ -11,23 +11,22 @@ const navItems = [
 ];
 const Navbar = () => {
   const location = useLocation();
-  const [activeNavLink, setActiveNavLink] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomePage = location.pathname === "/";
 
-  // Update active nav link based on current route
-  useEffect(() => {
+  // Derive active nav link from current route
+  const activeNavLink = useMemo(() => {
     const currentPath = location.pathname;
     const activeItem = navItems.find(item => item.path === currentPath);
     if (activeItem) {
-      setActiveNavLink(activeItem.id);
+      return activeItem.id;
     } else if (currentPath === "/") {
-      setActiveNavLink("home");
+      return "home";
     }
+    return "home"; // fallback
   }, [location.pathname]);
 
-  const handleNavClick = (navId) => {
-    setActiveNavLink(navId);
+  const handleNavClick = () => {
     setIsMobileMenuOpen(false); // Close mobile menu when a link is clicked
   };
 

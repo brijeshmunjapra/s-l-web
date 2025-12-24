@@ -101,7 +101,7 @@ async function processImageWithRetry(imagePath, options, retryCount = 0) {
         });
         break;
 
-      case '.gif':
+      case '.gif': {
         // Convert GIF to WebP for better compression
         sharpInstance = sharpInstance.webp({
           quality: quality,
@@ -116,6 +116,7 @@ async function processImageWithRetry(imagePath, options, retryCount = 0) {
           converted: true,
           newPath
         };
+      }
 
       case '.svg':
         // SVGs are usually already optimized, skip compression
