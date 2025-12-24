@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./FeedBack.scss";
 
 import brideImg from "../../../../assets/about-us/1.jpg";
@@ -5,6 +6,19 @@ import user1 from "../../../../assets/about-us/1.jpg";
 import Slider from "./Slider";
 
 const FeedBack = () => {
+  const [swiper, setSwiper] = useState(null);
+
+  const handlePrev = () => {
+    if (swiper) swiper.slidePrev();
+  };
+
+  const handleNext = () => {
+    if (swiper) swiper.slideNext();
+  };
+
+  const handleSwiperInit = (swiperInstance) => {
+    setSwiper(swiperInstance);
+  };
 
   return (
     <section className="testimonials">
@@ -15,43 +29,9 @@ const FeedBack = () => {
             GENTLE FRAMES, LASTING IMPRESSIONS
           </span>
           <h2 className="title">What Our Clients Say</h2>
-
-          <div className="cards">
-            <div
-              className="card"
-            >
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
-
-              <div className="user">
-                <img src={user1} />
-                <div>
-                  <h4>John Smith</h4>
-                  <span>Customers</span>
-                </div>
-              </div>
-
-              <span className="quote">“</span>
-            </div>
-            <div
-              className="card"
-            >
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
-
-              <div className="user">
-                <img src={user1} />
-                <div>
-                  <h4>John Smith</h4>
-                  <span>Customers</span>
-                </div>
-              </div>
-
-              <span className="quote">“</span>
-            </div>
-          </div>
-
           <div className="arrows">
-            <button>←</button>
-            <button>→</button>
+            <button onClick={handlePrev}>←</button>
+            <button onClick={handleNext}>→</button>
           </div>
         </div>
 
@@ -66,7 +46,7 @@ const FeedBack = () => {
           </div>
         </div>
       </div>
-      <Slider/>
+      <Slider onSwiperInit={handleSwiperInit} />
     </section>
 
   );
