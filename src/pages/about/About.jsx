@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.scss";
-import image from "../../assets/sixth-section/bg.jpg";
+import video from "../../assets/sixth-section/backroudVideo.mp4";
 import HowWeStarted from "../../component/sections/about-us/how-we-started/HowWeStarted";
 import FeedBack from "../../component/sections/about-us/feedback/FeedBack";
 
@@ -17,7 +17,7 @@ const About = () => {
         </div>
       </div>
       <div className="about-image">
-        <img src={image} alt="About Us" />
+        <video src={video} alt="About Us" autoPlay muted loop />
       </div>
       <HowWeStarted />
       <FeedBack />

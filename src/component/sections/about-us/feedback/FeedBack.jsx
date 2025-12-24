@@ -5,7 +5,7 @@ import user1 from "../../../../assets/about-us/1.jpg";
 import user2 from "../../../../assets/about-us/1.jpg";
 import user3 from "../../../../assets/about-us/1.jpg";
 import user4 from "../../../../assets/about-us/1.jpg";
-
+import Slider from "./Slider";
 
 const FeedBack = () => {
 
@@ -69,7 +69,9 @@ const FeedBack = () => {
           </div>
         </div>
       </div>
+      <Slider/>
     </section>
+
   );
 };
 

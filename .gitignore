@@ -71,3 +71,11 @@ battery-report.html
 .lesshst
 .yarnrc
 .gitconfig
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.mkv
+BackroudVideo.mp4
+backroudVideo.mp4

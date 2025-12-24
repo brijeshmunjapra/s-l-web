@@ -6,8 +6,8 @@ const useLenis = (options = {}) => {
 
   // Optimized default settings for smooth scrolling performance
   const defaultOptions = {
-    scrollSpeed: 0.8,     // Slightly faster for better responsiveness
-    duration: 0.8,        // Shorter duration for snappier feel
+    scrollSpeed: 0.4,     // Slightly faster for better responsiveness
+    duration: 0.5,        // Shorter duration for snappier feel
     lerp: 0.08,           // Lower lerp for smoother interpolation
     maxWheelDelta: 100,   // Allow more wheel delta for natural scrolling
   };
