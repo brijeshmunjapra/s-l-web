@@ -7,9 +7,9 @@ import useLenis from '../../hooks/useLenis'
 const Layout = () => {
 
   const { lenis } = useLenis({
-    scrollSpeed: 0.25,   
-    duration: 1.5,      
-    lerp: 0.18   
+    scrollSpeed: 0.4,
+    duration: 1.2,
+    lerp: 0.18
   });
 
   return (

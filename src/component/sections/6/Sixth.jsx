@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Sixth.scss";
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
+import Video from "../../../../src/assets/sixth-section/backroudVideo.mp4"
 
 const Sixth = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -130,7 +131,17 @@ const Sixth = React.memo(() => {
       <div
         ref={bgRef}
         className="sixth-bg-fixed"
-      />
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="sixth-bg-video"
+        >
+          <source src={Video} type="video/mp4" />
+        </video>
+      </div>
       <div
         ref={sectionRef}
         className="sixth-section"
