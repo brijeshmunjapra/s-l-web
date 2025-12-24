@@ -1,30 +1,144 @@
-import React from "react";
+import React, { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import user1 from "../../../../assets/about-us/1.jpg";
 
-import "./Slider.css";
+import "./Slider.scss";
 
-export default function App() {
+export default function App({ onSwiperInit }) {
+  const swiperRef = useRef(null);
+
   return (
     <>
-      <h3>
-        Slider5 is visible when you slide to 2,3, or 4, and slider5 has
-        "swiper-slide-visible" className
-      </h3>{" "}
-      <br />
-      <Swiper watchSlidesProgress={true} slidesPerView={3} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+
+      <Swiper
+        watchSlidesProgress={true}
+        slidesPerView={2}
+        className="mySwiper"
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          if (onSwiperInit) onSwiperInit(swiper);
+        }}
+      >
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>          <div className="card">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+          <div className="user">
+            <img src={user1} />
+            <div>
+              <h4>John Smith</h4>
+              <span>Customers</span>
+            </div>
+          </div>
+          <span className="quote">“</span>
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="card">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum porro exercitationem libero. Nesciunt.</p>
+            <div className="user">
+              <img src={user1} />
+              <div>
+                <h4>John Smith</h4>
+                <span>Customers</span>
+              </div>
+            </div>
+            <span className="quote">“</span>
+          </div>
+        </SwiperSlide>
       </Swiper>
     </>
   );

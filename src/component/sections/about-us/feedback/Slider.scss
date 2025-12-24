@@ -1,0 +1,74 @@
+.swiper {
+  width: 681px;
+  margin-left: 0;
+  top: -270px;
+}
+
+.swiper-slide {
+  height: 300px;
+  background: transparent;
+
+}
+
+.swiper-wrapper {
+  gap: 1px;
+}
+
+.mySwiper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+
+.card {
+  background: #fbf8f3;
+  width: 300px;
+  border-radius: 18px;
+  padding: 6px 15px 60px;
+  height: 150px;
+  flex-shrink: 0;
+
+  p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #6b6b6b;
+    margin-bottom: 28px;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0;
+      color: #111;
+    }
+
+    span {
+      font-size: 12px;
+      color: #9c9c9c;
+    }
+  }
+
+  /* quote EXACT */
+  .quote {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    font-size: 92px;
+    line-height: 1;
+    color: #eadfcf;
+    font-family: "Playfair Display", serif;
+    pointer-events: none;
+  }
+}
