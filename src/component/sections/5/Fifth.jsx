@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./Fifth.scss";
 import image1 from "../../../assets/fifth-section/1.webp";
 import image2 from "../../../assets/fifth-section/2.webp";
@@ -9,7 +9,6 @@ import rightArrow from "../../../assets/right-arrow.svg";
 const Fifth = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [slideDirection, setSlideDirection] = useState('right'); // 'left' or 'right'
 
   // Check if we're on mobile
   useEffect(() => {
@@ -24,12 +23,10 @@ const Fifth = React.memo(() => {
 
   // Navigation functions for mobile
   const nextBlog = () => {
-    setSlideDirection('right');
     setCurrentIndex((prev) => (prev + 1) % blogs.length);
   };
 
   const prevBlog = () => {
-    setSlideDirection('left');
     setCurrentIndex((prev) => (prev - 1 + blogs.length) % blogs.length);
   };
   // const timeoutRef = useRef(null);
@@ -161,11 +158,6 @@ const Fifth = React.memo(() => {
                   key={index}
                   className={`indicator ${index === currentIndex ? 'active' : ''}`}
                   onClick={() => {
-                    if (index > currentIndex) {
-                      setSlideDirection('right');
-                    } else if (index < currentIndex) {
-                      setSlideDirection('left');
-                    }
                     setCurrentIndex(index);
                   }}
                 />

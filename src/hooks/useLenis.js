@@ -91,7 +91,7 @@ const useLenis = (options = {}) => {
         lenisRef.current.destroy();
       }
     };
-  }, []);
+  }, [config.duration, config.lerp, config.scrollSpeed]);
 
   // Provide a method to scroll to specific positions programmatically with optimized settings
   const scrollTo = useCallback((target, options = {}) => {
@@ -104,9 +104,8 @@ const useLenis = (options = {}) => {
     }
   }, []);
 
-  // Return both the lenis instance and scrollTo method
+  // Return scrollTo method
   return {
-    lenis: lenisRef.current,
     scrollTo,
   };
 };
