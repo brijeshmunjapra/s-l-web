@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Sixth.scss";
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
-import Video from "../../../../src/assets/sixth-section/backroudVideo.mp4"
 
 const Sixth = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -140,7 +139,7 @@ const Sixth = React.memo(() => {
           playsInline
           className="sixth-bg-video"
         >
-          <source src={Video} type="video/mp4" />
+          <source src="https://event-pdf-crm.s3.ap-south-1.amazonaws.com/wesite-images/V%26V+INSTA+STORY+2.mp4" type="video/mp4" />
         </video>
       </div>
       <div
