@@ -8,7 +8,7 @@ import user1 from "../../../../assets/about-us/1.jpg";
 
 import "./Slider.scss";
 
-export default function App({ onSwiperInit }) {
+export default function Slider({ onSwiperInit }) {
   const swiperRef = useRef(null);
 
   return (

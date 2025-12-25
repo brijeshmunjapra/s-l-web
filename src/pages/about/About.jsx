@@ -16,7 +16,7 @@ const About = () => {
         </div>
       </div>
       <div className="about-image">
-        <video src="https://event-pdf-crm.s3.ap-south-1.amazonaws.com/wesite-images/V%26V+INSTA+STORY+2.mp4" alt="About Us" autoPlay muted loop />
+        <video className="video" src="https://event-pdf-crm.s3.ap-south-1.amazonaws.com/wesite-images/V%26V+INSTA+STORY+2.mp4" alt="About Us" autoPlay muted loop />
       </div>
       <HowWeStarted />
       <FeedBack />

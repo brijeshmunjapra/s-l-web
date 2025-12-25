@@ -53,10 +53,9 @@ const Footer = () => {
               <img src={igIcon} alt="Instagram" />
             </a>
           </div>
-
-          <div className="footer-copyright">
-            Copyright 2024 All Rights Reserved
-          </div>
+        </div>
+        <div className="footer-copyright">
+          Copyright 2024 All Rights Reserved
         </div>
       </div>
     </footer>
