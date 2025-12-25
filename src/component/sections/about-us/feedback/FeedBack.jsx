@@ -45,8 +45,9 @@ const FeedBack = () => {
             <span>Based on 500+ Reviews</span>
           </div>
         </div>
+
+        <Slider onSwiperInit={handleSwiperInit} />
       </div>
-      <Slider onSwiperInit={handleSwiperInit} />
     </section>
 
   );
