@@ -48,26 +48,29 @@
     /* ===== arrows EXACT position ===== */
     .arrows {
       position: absolute;
-      top: 200px;
-      right: -130px;
+      top: 230px;
+      right: -150px;
       display: flex;
       gap: 16px;
 
       button {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        border: 1px solid #e1e1e1;
-        background: transparent;
-        font-size: 18px;
-        line-height: 1;
-        cursor: pointer;
-        color: #111;
-        transition: background .25s ease, color .25s ease;
+        border: none;
+        background-color: transparent;
+        transition: opacity 0.3s ease;
 
-        &:hover {
-          background: #111;
-          color: #fff;
+        &.disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          transition: filter 0.3s ease;
+        }
+
+        &.disabled img {
+          filter: grayscale(100%);
         }
       }
     }
@@ -88,7 +91,6 @@
   .image-box {
     position: relative;
     height: 552px;
-    // border-radius: 22px;
     overflow: hidden;
     z-index: 1;
     display: flex;
@@ -98,35 +100,38 @@
       width: 95%;
       height: 100%;
       object-fit: cover;
+      border-radius: 22px;
     }
 
     /* rating box */
     .rating {
       position: absolute;
-      top: 22px;
-      left: 45px;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(6px);
-      padding: 16px 18px 17px;
-      border-radius: 14px;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
+      width: 100%;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       .stars {
-        color: #f4c15d;
-        font-size: 14px;
+        display: flex;
+        gap: 2px;
         margin-bottom: 6px;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
       }
 
       h4 {
-        font-size: 14px;
+        font-size: 30px;
         font-weight: 500;
         margin: 0 0 2px;
-      }
-
-      span {
-        font-size: 11px;
-        opacity: 0.85;
       }
     }
 
@@ -145,6 +150,61 @@
         border-radius: 50%;
         border: 2px solid #ffffff;
         object-fit: cover;
+      }
+    }
+  }
+
+  /* ================= BIG SCREENS (1440px+) ================= */
+  @media (min-width: 1440px) {
+    .rating {
+      top: 70px !important;
+      width: 100%;
+      .stars {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 6px;
+
+        img {
+          width: 30px !important;
+          height: 30px !important;
+        }
+      }
+
+      h4 {
+        font-size: 40px !important;
+        font-weight: 500;
+        margin: 20px 0 2px !important;
+        letter-spacing: 2px;
+      }
+    }
+
+
+    .container {
+      max-width: 1600px;
+      column-gap: 200px;
+    }
+
+    .image-box {
+      height: 700px;
+
+      img {
+        width: 100%;
+        border-radius: 30px;
+      }
+    }
+
+    .content .title {
+      font-size: 64px;
+      margin-bottom: 120px;
+    }
+
+    .content .arrows {
+      top: 250px;
+      right: -190px;
+
+      button img {
+        width: 80px;
+        height: 80px;
       }
     }
   }
