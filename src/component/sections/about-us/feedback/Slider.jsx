@@ -5,11 +5,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import user1 from "../../../../assets/about-us/1.jpg";
+import quoteIcon from "../../../../assets/about-us/quote.svg";
 
 import "./Slider.scss";
 
-export default function Slider({ onSwiperInit }) {
+export default function Slider({ onSwiperInit, onPositionChange }) {
   const swiperRef = useRef(null);
+
+  const handleSlideChange = (swiper) => {
+    if (onPositionChange) {
+      onPositionChange({
+        isBeginning: swiper.isBeginning,
+        isEnd: swiper.isEnd
+      });
+    }
+  };
 
   return (
     <>
@@ -21,7 +31,15 @@ export default function Slider({ onSwiperInit }) {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           if (onSwiperInit) onSwiperInit(swiper);
+          // Initial position check
+          if (onPositionChange) {
+            onPositionChange({
+              isBeginning: swiper.isBeginning,
+              isEnd: swiper.isEnd
+            });
+          }
         }}
+        onSlideChange={handleSlideChange}
       >
         <SwiperSlide>
           <div className="card">
@@ -33,7 +51,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>          <div className="card">
@@ -45,7 +63,7 @@ export default function Slider({ onSwiperInit }) {
               <span>Customers</span>
             </div>
           </div>
-          <span className="quote">“</span>
+          <img src={quoteIcon} alt="quote" className="quote" />
         </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -58,7 +76,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -71,7 +89,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -84,7 +102,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -97,7 +115,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -110,7 +128,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -123,7 +141,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -136,7 +154,7 @@ export default function Slider({ onSwiperInit }) {
                 <span>Customers</span>
               </div>
             </div>
-            <span className="quote">“</span>
+            <img src={quoteIcon} alt="quote" className="quote" />
           </div>
         </SwiperSlide>
       </Swiper>
