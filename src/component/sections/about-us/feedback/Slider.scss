@@ -1,11 +1,14 @@
 .swiper {
   width: 900px;
   margin-left: 0;
-  top: -270px;
+  position: absolute;
+  bottom: 0;
+  left: 42%;
+  transform: translateX(-50%);
 }
 
 .swiper-slide {
-  height: 300px;
+  height: 270px;
   background: transparent;
 
 }
