@@ -1,5 +1,5 @@
 .swiper {
-  width: 681px;
+  width: 900px;
   margin-left: 0;
   top: -270px;
 }
@@ -22,8 +22,8 @@
 
 .card {
   background: #fbf8f3;
-  width: 300px;
-  border-radius: 18px;
+  width: 400px;
+  border-radius: 8px;
   padding: 6px 15px 60px;
   height: 150px;
   flex-shrink: 0;
@@ -64,7 +64,7 @@
   .quote {
     position: absolute;
     bottom: 100px;
-    right: 20px;
+    right: 40px;
     font-size: 92px;
     line-height: 1;
     color: #eadfcf;

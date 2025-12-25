@@ -10,8 +10,8 @@
     max-width: 1296px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 508px;
-    column-gap: 72px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 150px;
     align-items: start;
     position: relative;
     overflow: hidden;
@@ -47,7 +47,7 @@
     .arrows {
       position: absolute;
       top: 200px;
-      right: -64px;
+      right: -130px;
       display: flex;
       gap: 16px;
 
@@ -80,81 +80,29 @@
       width: max-content;
       bottom: -300px;
     }
-
-    .card {
-      background: #fbf8f3;
-      width: 300px;
-      border-radius: 18px;
-      padding: 6px 15px 60px;
-      height: 150px;
-      flex-shrink: 0;
-
-      p {
-        font-size: 14px;
-        line-height: 1.9;
-        color: #6b6b6b;
-        margin-bottom: 28px;
-      }
-
-      .user {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        img {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          object-fit: cover;
-        }
-
-        h4 {
-          font-size: 15px;
-          font-weight: 500;
-          margin: 0;
-          color: #111;
-        }
-
-        span {
-          font-size: 12px;
-          color: #9c9c9c;
-        }
-      }
-
-      /* quote EXACT */
-      .quote {
-        position: absolute;
-        bottom: 14px;
-        right: 22px;
-        font-size: 92px;
-        line-height: 1;
-        color: #eadfcf;
-        font-family: "Playfair Display", serif;
-        pointer-events: none;
-      }
-    }
   }
 
   /* ================= RIGHT IMAGE ================= */
   .image-box {
     position: relative;
     height: 552px;
-    border-radius: 22px;
+    // border-radius: 22px;
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    justify-content: end;
 
     img {
-      width: 100%;
+      width: 95%;
       height: 100%;
       object-fit: cover;
-      border-radius: 22px;
     }
 
     /* rating box */
     .rating {
       position: absolute;
       top: 22px;
-      left: 22px;
+      left: 45px;
       background: rgba(0, 0, 0, 0.55);
       backdrop-filter: blur(6px);
       padding: 16px 18px 17px;

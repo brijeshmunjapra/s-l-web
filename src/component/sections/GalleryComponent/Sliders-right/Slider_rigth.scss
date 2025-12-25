@@ -1,0 +1,117 @@
+.brijesh-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0eae0;
+    overflow: hidden;
+
+    .container {
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        padding: 0 40px;
+    }
+
+    /* LEFT */
+    .content {
+        flex: 0.7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: self-start;
+        gap: 100px;
+
+        h2 {
+            font-family: "Beauty Ballerina";
+            font-size: 56px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        p {
+            font-family: "Phetsarath";
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #8f95a3;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: justify;
+        }
+    }
+
+    /* RIGHT SLIDER */
+    .slider {
+        flex: 1.2;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .slider-track {
+        position: relative;
+        width: 100%;
+        height: 420px;
+    }
+
+    .slider-track img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 420px;
+        object-fit: cover;
+    }
+
+    /* ARROWS */
+    .nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.65);
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 10;
+
+        &.left {
+            left: -22px;
+        }
+
+        &.right {
+            right: -22px;
+        }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+        .container {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .slider-track {
+            height: 380px;
+        }
+
+        .slider-track img {
+            height: 380px;
+        }
+
+        .nav.left {
+            left: 10px;
+        }
+
+        .nav.right {
+            right: 10px;
+        }
+    }
+}
