@@ -141,7 +141,7 @@
     white-space: nowrap;
 }
 
-.first-row {
+.first-row-2{
     height: 45vh;
 
     @media (max-width: 768px) {
@@ -207,7 +207,7 @@
         min-width: calc(100% / 4);
     }
 
-    .first-row {
+    .first-row-2{
         min-height: 280px;
     }
 }
@@ -218,7 +218,7 @@
         min-width: calc(100% / 3);
     }
 
-    .first-row {
+    .first-row-2 {
         min-height: 200px;
     }
 }
@@ -229,7 +229,7 @@
         min-width: calc(100% / 2);
     }
 
-    .first-row {
+    .first-row-2 {
         min-height: 180px;
     }
 }
@@ -240,7 +240,7 @@
         min-width: calc(100% / 1.5);
     }
 
-    .first-row {
+    .first-row-2 {
         min-height: 150px;
     }
 
