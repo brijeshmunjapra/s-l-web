@@ -1,0 +1,26 @@
+.award {
+    height: 50vh;
+    background-color: #f0eae0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 100px;
+    h1 {
+        font-family: "Beauty Ballerina";
+        font-size: 50px;
+        font-weight: 900;
+        color: #1e1e1e;
+        margin-bottom: 22px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        margin: 0;
+        text-align: center;
+    }
+    .Award_images{
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 90px;
+        justify-content: center;
+        align-items: center;
+    }
+}

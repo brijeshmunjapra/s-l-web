@@ -5,6 +5,7 @@ import Fourth from '../../component/sections/4/Fourth'
 import Fifth from '../../component/sections/5/Fifth'
 import Sixth from '../../component/sections/6/Sixth'
 import Seventh from '../../component/sections/7/Seventh'
+import Award from '../../component/sections/Award/Award'
 import ContactUs from '../ContactUs/ContactUs'
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
       <Fifth />
       <Sixth />
       <Seventh />
+      <Award/>
     </>
   )
 }

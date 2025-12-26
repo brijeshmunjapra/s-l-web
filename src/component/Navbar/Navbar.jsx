@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../assets/logo.png";
@@ -12,7 +12,19 @@ const navItems = [
 const Navbar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const isHomePage = location.pathname === "/";
+
+  // Handle scroll detection for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Derive active nav link from current route
   const activeNavLink = useMemo(() => {
@@ -35,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${isHomePage ? "navbar-overlay" : ""}`}>
+    <nav className={`navbar ${isHomePage ? "navbar-overlay" : ""} ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
         <div className="logo-container">
           <Link to="/">
