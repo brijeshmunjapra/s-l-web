@@ -20,6 +20,7 @@
   line-height: 1.25;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  
 }
 
 .how-we-started-content {
@@ -108,7 +109,9 @@
     }
   }
 }
-
+.about-page .about-header-title{
+  padding-left: 16rem;
+}
 // Responsive adjustments
 @media (max-width: 1400px) {
   .how-we-started-container {
