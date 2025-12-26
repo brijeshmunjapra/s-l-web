@@ -2,7 +2,7 @@
   width: 900px;
   margin-left: 0;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 42%;
   transform: translateX(-50%);
 }
@@ -37,15 +37,16 @@
     color: #6b6b6b;
     margin-bottom: 28px;
   }
-
+  
   .user {
+    margin-top: 70px;
     display: flex;
     align-items: center;
     gap: 12px;
 
     img {
-      width: 44px;
-      height: 44px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
     }

@@ -44,12 +44,12 @@
         }
     }
     .slider-left-arrow-left{
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.801);
+        background-color: white;
         border:none;
-        color: white;
+        color: black;
         font-size: 24px;
         font-weight: bold;
         position: absolute;
@@ -66,17 +66,17 @@
     }
 
     .slider-left-arrow-Rigth{
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background-color:rgba(0, 0, 0, 0.801);
+        background-color:white;
         border: none;
-        color: white;
+        color: black;
         font-size: 24px;
         font-weight: bold;
         position: absolute;
         top: 50%;
-        right: -20px;
+        right: 5px;
         z-index: 2;
         cursor: pointer;
         display: flex;
