@@ -87,7 +87,7 @@ const Our_Gallery = () => {
 
         {/* Marquee Slider */}
         <div ref={sectionRef} className={`gallery-marquee ${hasAnimated ? 'animate' : ''}`}>
-          <div className='image-row first-row'>
+          <div className='image-row first-row-2'>
             <div ref={firstRowRef} className='image-row-inner first-row-inner'>
               {firstRowImages.map((img, index) => (
                 <div key={`first-${index}`} className='image-item'>
