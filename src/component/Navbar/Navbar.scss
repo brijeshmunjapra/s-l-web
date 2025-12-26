@@ -15,7 +15,7 @@
 }
 
 .navbar {
-  position: absolute; // Always absolute so content can go behind it
+  position: absolute; // Not fixed initially, will become fixed on scroll
   top: 0;
   left: 0;
   right: 0;
@@ -28,6 +28,8 @@
   // Background will be handled by pseudo-element for gradient blur
   background: transparent;
   overflow: visible;
+  // Smooth transition for background and box-shadow changes
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, position 0.3s ease;
 
   // Pseudo-element for enhanced glassmorphism blur effect
   &::before {
@@ -40,16 +42,44 @@
     background: transparent;
     z-index: -1;
     pointer-events: none;
+    // Smooth transition for background changes
+    transition: background-color 0.3s ease;
   }
 
   &.navbar-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
 
     &::before {
       background: transparent;
+    }
+  }
+
+  // When scrolled - add background color and make it fixed
+  &.scrolled {
+    position: fixed; // Become fixed when scrolled
+    background: #f0eae0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px 0px;
+    &::before {
+      background: #f0eae0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    // Change nav link colors when scrolled
+    .nav-links .nav-link {
+      color: #333;
+      transition: color 0.3s ease;
+
+      &:hover,
+      &.active {
+        color: #000;
+      }
     }
   }
 
