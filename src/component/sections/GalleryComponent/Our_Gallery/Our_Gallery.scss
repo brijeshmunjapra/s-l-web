@@ -41,16 +41,16 @@
     }
 
     h2 {
-        font-family: "Beauty Ballerina";
-        font-size: 60px;
         font-weight: 400;
         color: #2a2a2a;
         margin: 0;
         padding: 0;
         line-height: 1.25;
-        letter-spacing: 0.03em;
         text-transform: uppercase;
-        text-align: center;
+        font-family: "Rosehot", serif;
+        letter-spacing: 0.05em;
+        font-size: 3rem;
+    
 
         @media (max-width: 1200px) {
             font-size: 48px;
@@ -67,14 +67,12 @@
     }
 
     p {
-        font-family: "Phetsarath";
-        font-size: 0.75rem;
-        font-weight: 400;
-        color: #8f95a3;
-        margin: 0;
-        letter-spacing: 2px;
-        text-transform: uppercase;
         text-align: justify;
+        font-size: 0.9rem;
+        padding-right: 8rem;
+        line-height: 1.5;
+        color: #5c6270;
+        letter-spacing: 0.03em;
 
         @media (max-width: 768px) {
             font-size: 0.7rem;
@@ -103,7 +101,7 @@
         text-transform: uppercase;
         text-align: justify;
         text-align: center;
-        line-height: 20px;
+        line-height: 20px;        
     }
 }
 
@@ -144,8 +142,7 @@
 }
 
 .first-row {
-    height: 35vh;
-    min-height: 280px;
+    height: 45vh;
 
     @media (max-width: 768px) {
         height: 30vh;
