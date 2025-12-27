@@ -2,7 +2,7 @@ import React from "react";
 import "./About.scss";
 import HowWeStarted from "../../component/sections/about-us/how-we-started/HowWeStarted";
 import FeedBack from "../../component/sections/about-us/feedback/FeedBack";
-// import Vertical_timeline from "../../component/sections/about-us/Vertical_timeline/Vertical_timeline";
+import Vertical_timeline from "../../component/sections/about-us/Vertical_timeline/Vertical_timeline";
 import Award from "../../component/sections/Award/Award";
 
 const About = () => {
@@ -22,7 +22,7 @@ const About = () => {
       </div>
       <HowWeStarted />
       <FeedBack />
-      {/* <Vertical_timeline/> */}
+      <Vertical_timeline/>
       <Award/>
     </div>
   );
