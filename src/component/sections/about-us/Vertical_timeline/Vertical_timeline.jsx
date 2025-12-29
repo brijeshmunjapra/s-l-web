@@ -6,82 +6,82 @@ import backgroundImage from '../../../../assets/about-us/1.jpg'
 import backgroundImage1 from '../../../../assets/fourth-section/1.webp'
 import backgroundImage2 from '../../../../assets/fourth-section/2.webp'
 import backgroundImage3 from '../../../../assets/fourth-section/3.webp'
+import backgroundImage4 from '../../../../assets/fourth-section/4.webp'
+import backgroundImage5 from '../../../../assets/fourth-section/5.webp'
+import backgroundImage6 from '../../../../assets/fourth-section/6.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Vertical_timeline = () => {
-  const sectionRef = useRef(null);
-  const timelineRef = useRef(null);
-  const timelineItemsRef = useRef([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Timeline data
-  const timelineData = [
+// Timeline data
+const timelineData = [
     {
       id: 1,
       year: "2015",
       title: "Company Founded",
-      description: "Our journey began with a vision to revolutionize the industry through innovative solutions.",
-      icon: "🚀",
+      description: "Our journey began with a vision to revolutionize the industry through innovative solutions Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
       backgroundImage: `url(${backgroundImage})`
     },
     {
       id: 2,
       year: "2017",
       title: "First Major Project",
-      description: "Successfully delivered our first large-scale project, establishing our reputation in the market.",
-      icon: "🏆",
+      description: "Successfully delivered our first large-scale project, establishing our reputation in the market Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
       backgroundImage: `url(${backgroundImage1})`
     },
     {
       id: 3,
       year: "2019",
       title: "Team Expansion",
-      description: "Grew our talented team to 50+ members, bringing diverse expertise and fresh perspectives.",
-      icon: "👥",
+      description: "Grew our talented team to 50+ members, bringing diverse expertise and fresh perspectives Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
       backgroundImage: `url(${backgroundImage2})`
     },
     {
       id: 4,
       year: "2021",
       title: "Global Recognition",
-      description: "Received international awards and expanded our services to global markets.",
-      icon: "🌍",
+      description: "Received international awards and expanded our services to global markets Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
       backgroundImage: `url(${backgroundImage3})`
     },
     {
       id: 5,
       year: "2023",
       title: "Innovation Hub",
-      description: "Launched our innovation center, pushing boundaries with cutting-edge technology.",
-      icon: "💡",
-      backgroundImage: `url(${backgroundImage})`
+      description: "Launched our innovation center, pushing boundaries with cutting-edge technology Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
+      backgroundImage: `url(${backgroundImage4})`
     },
     {
       id: 6,
       year: "2025",
       title: "Future Vision",
-      description: "Continuing to innovate and lead the industry into the future with bold new initiatives.",
-      icon: "⭐",
-      backgroundImage: `url(${backgroundImage})`
+      description: "Continuing to innovate and lead the industry into the future with bold new initiatives Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
+      backgroundImage: `url(${backgroundImage5})`
     },
     {
       id: 7,
       year: "2026",
-      title: "Future Vision",
-      description: "Continuing to innovate and lead the industry into the future with bold new initiatives.",
-      icon: "⭐",
-      backgroundImage: `url(${backgroundImage})`
+      title: "First Major Projec",
+      description: "Continuing to innovate and lead the industry into the future with bold new initiatives Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
+      backgroundImage: `url(${backgroundImage6})`
     },
     {
       id: 8,
       year: "2027",
-      title: "Future Vision",
-      description: "Continuing to innovate and lead the industry into the future with bold new initiatives.",
-      icon: "⭐",
+      title: "Company Founded",
+      description: "Continuing to innovate and lead the industry into the future with bold new initiatives Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, soluta vitae sequi qui provident, cum quia nihil molestiae placeat totam cumque neque necessitatibus! Tenetur iste, saepe ut molestias quod magnam a eveniet, explicabo praesentium architecto in. Doloribus, sint, aliquam ipsum laborum est tenetur nesciunt explicabo fugit debitis similique a porro officia eos enim impedit quam sit ut minima, voluptatem consectetur odit aperiam quos nam. Rerum dicta perferendis repellendus impedit accusamus expedita! Unde itaque ipsa mollitia perferendis explicabo optio dolorem. Ad quisquam, voluptate modi at quas in iste maiores atque laudantium inventore, eius rem laboriosam aliquid provident repudiandae, commodi recusandae nihil.",
       backgroundImage: `url(${backgroundImage})`
     },
   ];
+
+const Vertical_timeline = () => {
+  const sectionRef = useRef(null);
+  const timelineRef = useRef(null);
+  const timelineItemsRef = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [prevActiveIndex, setPrevActiveIndex] = useState(0);
+  const yearRefs = useRef([]);
+  const backgroundRef = useRef(null);
+  const [currentBgImage, setCurrentBgImage] = useState(timelineData[0]?.backgroundImage);
+  const [nextBgImage, setNextBgImage] = useState(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -101,7 +101,7 @@ const Vertical_timeline = () => {
     const totalItems = timelineData.length;
 
     // Calculate scroll distance for each item step
-    const scrollPerItem = 300; // 300px scroll per item
+    const scrollPerItem = 500; // 300px scroll per item
     const totalScrollDistance = totalItems * scrollPerItem;
 
     // Create ScrollTrigger that pins the section and controls timeline
@@ -116,8 +116,8 @@ const Vertical_timeline = () => {
       onUpdate: (self) => {
         const progress = self.progress;
 
-        // Calculate which item should be active
-        const activeItemIndex = Math.floor(progress * totalItems);
+        // Calculate which item should be active (clamp to valid range)
+        const activeItemIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
 
         // Update active index state
         setActiveIndex(activeItemIndex);
@@ -138,37 +138,111 @@ const Vertical_timeline = () => {
     };
   }, []);
 
+  // Animation effect when active index changes
+  useEffect(() => {
+    if (prevActiveIndex !== activeIndex) {
+      // Animate the previous active year out
+      if (yearRefs.current[prevActiveIndex]) {
+        gsap.to(yearRefs.current[prevActiveIndex], {
+          scale: 1,
+          y: 0,
+          opacity: 0.7,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+
+      // Animate the new active year in
+      if (yearRefs.current[activeIndex]) {
+        gsap.fromTo(yearRefs.current[activeIndex],
+          {
+            scale: 0.8,
+            y: 10,
+            opacity: 0
+          },
+          {
+            scale: 2,
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            ease: "back.out(1.7)"
+          }
+        );
+      }
+
+      setPrevActiveIndex(activeIndex);
+    }
+  }, [activeIndex, prevActiveIndex]);
+
+  // Initialize first background
+  useEffect(() => {
+    setCurrentBgImage(timelineData[0]?.backgroundImage);
+  }, []);
+
+  // Smooth animated transition for asset images
+  useEffect(() => {
+    if (prevActiveIndex !== activeIndex && backgroundRef.current) {
+      // Create smooth fade-in animation for new image
+      gsap.fromTo(backgroundRef.current,
+        {
+          opacity: 0.7,
+          scale: 1.1
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power2.out"
+        }
+      );
+      // Change asset background image
+      setCurrentBgImage(timelineData[activeIndex]?.backgroundImage);
+    }
+  }, [activeIndex, prevActiveIndex]);
+
   return (
     <>
       <section className='vertical_scrolle' ref={sectionRef}>
+        {/* Background Image Layer - Only this transitions */}
         <div
-          className='background'
+          className='background-image'
+          ref={backgroundRef}
           style={{
-            backgroundImage: timelineData[activeIndex]?.backgroundImage
+            backgroundImage: currentBgImage
           }}
-        >
+        ></div>
+
+        {/* Text Overlay Layer - Always full opacity */}
+        <div className='text-overlay'>
           <div className='timeline-container'>
             {/* Left Column - Years */}
             <div className='timeline-years-column'>
               {timelineData.map((item, index) => {
-                // Show only current, previous, and next items for centered view
+                // Show current, previous, next, and adjacent items for better visibility
                 const isVisible = Math.abs(index - activeIndex) <= 1;
                 return (
                   <div
                     key={`year-${item.id}`}
-                    className={`timeline-year-item ${index === activeIndex ? 'active center' : ''} ${isVisible ? 'visible' : 'hidden'}`}
+                    className={`timeline-year-item ${index === activeIndex ? 'active start' : ''} ${isVisible ? 'visible' : 'hidden'}`}
                     style={{
                       transform: `translateY(${(index - activeIndex) * 80}px)`,
-                      opacity: isVisible ? 1 : 0,
-                      transition: 'all 0.5s ease'
+                      // transition: 'all 1s ease'
                     }}
                   >
-                    <div className='timeline-year'>{item.year}</div>
+                    <div
+                      className='timeline-year'
+                      ref={(el) => yearRefs.current[index] = el}
+                    >
+                      {item.year}
+                    </div>
                     <div className='timeline-dot'></div>
                   </div>
                 );
               })}
             </div>
+
+            {/* Separator Line */}
+            <div className='timeline-separator'></div>
 
             {/* Right Column - Content */}
             <div className='timeline-content-column'>
@@ -179,7 +253,6 @@ const Vertical_timeline = () => {
                   ref={(el) => timelineItemsRef.current[index] = el}
                 >
                   <div className='timeline-text-content'>
-                    <div className='timeline-icon'>{item.icon}</div>
                     <h3 className='timeline-title'>{item.title}</h3>
                     <p className='timeline-description'>{item.description}</p>
                   </div>

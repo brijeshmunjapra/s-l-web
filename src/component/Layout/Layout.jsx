@@ -10,7 +10,7 @@ const Layout = () => {
   useLenis({
     scrollSpeed: 0.4,
     duration: 1.2,
-    lerp: 0.18
+    lerp: 0.18        // Balanced lerp for good smoothness
   });
 
   return (
