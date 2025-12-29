@@ -85,3 +85,37 @@ img, video, canvas, iframe {
 }
 
 /* CSS animations removed from fourth section - now using JavaScript requestAnimationFrame */
+
+/* Performance optimizations during scrolling */
+.scrolling-active * {
+  /* Pause animations during scroll to prevent conflicts with Lenis */
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html.lenis {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize marquee performance */
+.fourth-section .image-row-inner {
+  /* Use hardware acceleration only when needed */
+  will-change: transform;
+  /* Prevent layout thrashing */
+  contain: layout style;
+}
+
+/* Pause marquee during active scrolling */
+.scrolling-active .fourth-section .image-row-inner {
+  /* Pause transforms during scroll */
+  animation: none !important;
+}
