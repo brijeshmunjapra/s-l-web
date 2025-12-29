@@ -6,10 +6,12 @@ import img3 from '../../../../assets/fourth-section/3.webp';
 import img4 from '../../../../assets/fourth-section/4.webp';
 import img5 from '../../../../assets/fourth-section/5.webp';
 import img6 from '../../../../assets/fourth-section/6.webp';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from 'react-icons/io';
 
 const Slider_right = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupCurrentSlide, setPopupCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
 
   const sliderImages = [img1, img2, img3, img4, img5, img6];
@@ -22,12 +24,59 @@ const Slider_right = () => {
     setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
   };
 
+  const openPopup = (startIndex) => {
+    setPopupCurrentSlide(startIndex);
+    setIsPopupOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const nextPopupSlide = () => {
+    setPopupCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+  };
+
+  const prevPopupSlide = () => {
+    setPopupCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+  };
+
   useEffect(() => {
     if (sliderRef.current) {
       const translateX = -currentSlide * (100 / 3); // 100% / 3 positions = 33.333% per slide
       sliderRef.current.style.transform = `translateX(${translateX}%)`;
     }
   }, [currentSlide]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!isPopupOpen) return;
+
+      switch (event.key) {
+        case 'Escape':
+          closePopup();
+          break;
+        case 'ArrowLeft':
+          prevPopupSlide();
+          break;
+        case 'ArrowRight':
+          nextPopupSlide();
+          break;
+        default:
+          break;
+      }
+    };
+
+    if (isPopupOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isPopupOpen, popupCurrentSlide]);
 
   return (
     <section className="slider-right-brijesh-section">
@@ -52,18 +101,63 @@ const Slider_right = () => {
           <div ref={sliderRef} className='slider-right-slider-track'>
             {sliderImages.map((img, index) => (
               <div key={`slider-${index}`} className='slider-right-slider-item'>
-                <img src={img} alt={`Slider ${index + 1}`} loading="lazy" />
+                <img
+                  src={img}
+                  alt={`Slider ${index + 1}`}
+                  loading="lazy"
+                  onClick={() => openPopup(index)}
+                  style={{ cursor: 'pointer' }}
+                />
               </div>
             ))}
             {/* Duplicate first 2 images for seamless loop */}
             {sliderImages.slice(0, 2).map((img, index) => (
               <div key={`slider-duplicate-${index}`} className='slider-right-slider-item'>
-                <img src={img} alt={`Slider ${index + 1}`} loading="lazy" />
+                <img
+                  src={img}
+                  alt={`Slider ${index + 1}`}
+                  loading="lazy"
+                  onClick={() => openPopup(index)}
+                  style={{ cursor: 'pointer' }}
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Popup/Modal */}
+      {isPopupOpen && (
+        <div className="slider-popup-overlay" onClick={closePopup}>
+          <div className="slider-popup-content" onClick={(e) => e.stopPropagation()}>
+            <button className="slider-popup-close" onClick={closePopup}>
+              <IoMdClose />
+            </button>
+            <div className="slider-popup-image-container">
+              <button className="slider-popup-arrow slider-popup-arrow-left" onClick={prevPopupSlide}>
+                <IoIosArrowBack />
+              </button>
+              <img
+                src={sliderImages[popupCurrentSlide]}
+                alt={`Popup Slider ${popupCurrentSlide + 1}`}
+                className="slider-popup-image"
+              />
+              <button className="slider-popup-arrow slider-popup-arrow-right" onClick={nextPopupSlide}>
+                <IoIosArrowForward />
+              </button>
+            </div>
+            <div className="slider-popup-indicators">
+              {sliderImages.map((_, index) => (
+                <span
+                  key={index}
+                  className={`slider-popup-indicator ${index === popupCurrentSlide ? 'active' : ''}`}
+                  onClick={() => setPopupCurrentSlide(index)}
+                ></span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -7,6 +7,7 @@ const navItems = [
   { id: "home", label: "Home", path: "/" },
   { id: "about", label: "About Us", path: "/about" },
   { id: "gallery", label: "Gallery", path: "/gallery" },
+  { id: "blog", label: "Blog", path: "/blog" },
   { id: "contact", label: "Contact Us", path: "/contact" },
 ];
 const Navbar = () => {
