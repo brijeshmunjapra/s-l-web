@@ -1,0 +1,34 @@
+.blog {
+    min-height: 85vh;
+    background-color: #f0eae0;
+    padding: 100px 0px 0px;
+
+    @media (max-width: 768px) {
+        padding: 60px 0px;
+        min-height: auto;
+    }
+
+    @media (max-width: 480px) {
+        padding: 40px 0px;
+    }
+}
+
+.flex {
+    display: flex;
+    margin: 50px 100px;
+
+    @media (max-width: 1200px) {
+        margin: 40px 60px;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        margin: 30px 20px;
+        gap: 30px;
+    }
+
+    @media (max-width: 480px) {
+        margin: 20px 15px;
+        gap: 20px;
+    }
+}
