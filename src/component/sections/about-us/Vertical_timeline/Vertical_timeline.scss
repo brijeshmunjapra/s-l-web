@@ -89,13 +89,13 @@
         z-index: 5;
 
         .timeline-year {
-            color: #ff6b35;
+            color: #f0eae0;
             font-weight: bold;
             text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
         }
 
         .timeline-dot {
-            background: #ff6b35;
+            background: #f0eae0;
             transform: scale(1.3);
             box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
         }
@@ -164,7 +164,7 @@
     transition: all 0.3s ease;
 
     &.active {
-        background: #ff6b35;
+        background: #f0eae0;
         transform: scale(1.2);
         box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
     }
@@ -214,7 +214,7 @@
     transition: all 0.3s ease;
 
     .timeline-year-item.active & {
-        color: #ff6b35;
+        color: #f0eae0;
         transform: scale(1.2);
         text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
     }
@@ -276,10 +276,10 @@
     position: relative;
 
     .timeline-year-item.active & {
-        background: #ff6b35;
-        border-color: #ff6b35;
+        background: #f0eae0;
+        border-color: #f0eae0;
         transform: scale(1.5);
-        box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+        box-shadow: 0 0 20px #f0eae0;
     }
 
     &::before {

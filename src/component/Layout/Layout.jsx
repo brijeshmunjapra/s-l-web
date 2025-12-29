@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 import useLenis from '../../hooks/useLenis'
+import ScrollToTop from './ScrollToTop'
 
 const Layout = () => {
 
@@ -14,6 +15,7 @@ const Layout = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Outlet />
       <Footer />
