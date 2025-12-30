@@ -24,20 +24,24 @@
 
             .slider-left-slider-track {
                 display: flex;
-                width: 101%; // (6 + 2 duplicate) images * 33.333% each
+                width: auto; // (6 + 2 duplicate) images * 33.333% each
                 height: 100%;
                 transition: transform 0.5s ease-in-out;
                 transform: translateX(0);
 
                 .slider-left-slider-item {
-                    flex: 0 0 32.333%; // 1/3 of container width (3 images visible)
+                    flex: 0 0 auto; // Allow variable width based on image
                     height: 100%;
                     padding: 0 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
                     img {
-                        width: 100%;
+                        max-width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        // border-radius: 8px;
                     }
                 }
             }
@@ -76,7 +80,7 @@
         font-weight: bold;
         position: absolute;
         top: 50%;
-        right: 5px;
+        right: -22px;
         z-index: 2;
         cursor: pointer;
         display: flex;
@@ -99,20 +103,18 @@
 
         h2 {
             font-family: "Beauty Ballerina";
-            font-size: 70px;
+            font-size: 60px;
             font-weight: 400;
-            margin: 0px 0px 200px;
+            margin: 0px 0px 10px;
         }
 
         p {
-            font-family: "Phetsarath";
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #8f95a3;
-            margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.6;
+            font-family: "Times New Roman", "Times", serif !important;
+            color: #454a54d4;
+            font-weight: 300 !important;
+            letter-spacing: 0.01em;
+            line-height: 2;
+            font-size: 1.1rem;
         }
     }
 

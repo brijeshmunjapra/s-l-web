@@ -33,7 +33,7 @@ const Seventh = () => {
         <div className="seventh__content">
           <h2>JOIN OUR VISUAL JOURENY</h2>
 
-          <p>
+          <p className="sub-heading">
             Every photograph is a blend of emotion, light, and storytelling
             crafted with care. Follow us to experience moments that turn into
             timeless memories.

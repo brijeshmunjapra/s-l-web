@@ -33,18 +33,18 @@ const FeedBack = () => {
       <div className="container">
         {/* LEFT */}
         <div className="content">
-          <span className="subtitle">
-            GENTLE FRAMES, LASTING IMPRESSIONS
+          <span className="sub-heading subtitle">
+            gentle frames, lasting impressions
           </span>
           <h2 className="title">What Our Clients Say</h2>
           <div className="arrows">
             <button onClick={handlePrev} className={sliderPosition.isBeginning ? 'disabled' : ''}>
-                {/* <LeftArrow /> */}
-                <img src={RigthArrow} alt="" />
+              {/* <LeftArrow /> */}
+              <img src={RigthArrow} alt="" />
             </button>
             <button onClick={handleNext} className={sliderPosition.isEnd ? 'disabled' : ''}>
-                {/* <RightArrow */}
-                <img src={LeftArrow} alt="" />
+              {/* <RightArrow */}
+              <img src={LeftArrow} alt="" />
             </button>
           </div>
         </div>

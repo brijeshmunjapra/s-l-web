@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 6rem;
 
   .text-container{
     margin-bottom: 0px !important;
@@ -47,13 +47,13 @@
 }
 
 .sub-heading {
-  font-family: "Times New Roman", sans-serif;
-  font-size: 0.6rem !important;
+  // font-family: "Times New Roman", sans-serif;
+  font-size: 1rem !important;
   font-weight: 400;
   color: #8F95A3;
-  margin: 1rem 2rem 0 2rem !important;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  margin: 0 2rem 0 2rem;
+  letter-spacing: 1.5px !important;
+  text-transform: capitalize !important;
 }
 
 .photos-container {
@@ -90,10 +90,7 @@
 }
 
 /* Large Desktop (1440px+) */
-@media (min-width: 1441px) {
-  .second-section {
-    padding: 8rem 6rem;
-  }
+@media (min-width: 1440px) {
 
   .second-section-content {
     gap: 6rem;
@@ -105,19 +102,12 @@
 
   .sub-heading {
     font-size: 0.65rem;
-    margin: 1.25rem 3rem 0 3rem;
+    margin: 0rem 3rem 0 3rem;
   }
 }
 
 /* Desktop (1200px - 1440px) */
 @media (max-width: 1440px) {
-  .second-section {
-    padding: 6rem 4rem;
-  }
-
-  .second-section-content {
-    gap: 5rem;
-  }
 
   .second-section .main-heading {
     font-size: 2.8rem;

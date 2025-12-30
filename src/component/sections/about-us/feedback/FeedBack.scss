@@ -1,5 +1,5 @@
 .testimonials {
-  padding: 0px 0 0;
+  padding: 100px 0;
   height: 100vh;
   overflow: hidden;
   background: #f0eae0;
@@ -22,27 +22,27 @@
   /* ================= LEFT ================= */
   .content {
     position: relative;
-    padding-top: 4px;
+    padding-top: 50px;
     z-index: 3;
 
-
-    .subtitle {
-      font-size: 12px;
-      letter-spacing: 2.6px;
-      text-transform: uppercase;
-      color: #9c9c9c;
-      margin-bottom: 14px;
+    span{
+      margin: 0px 0px 14px 0px !important;
       display: block;
+      text-align: start !important;
     }
 
     .title {
-      font-family: "Playfair Display", serif;
-      font-size: 48px;
       margin-top: 0px;
-      line-height: 1.15;
-      font-weight: 500;
-      color: #111;
       margin-bottom: 100px;
+      font-family: "Beauty Ballerina", serif !important;
+      font-size: 3.2rem !important;
+      font-weight: 400;
+      color: #2a2a2a;
+      margin: 0;
+      padding: 0;
+      line-height: 1.25;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     /* ===== arrows EXACT position ===== */
@@ -151,9 +151,15 @@
       }
 
       h4 {
-        font-size: 30px;
-        font-weight: 500;
         margin: 0 0 2px;
+        font-family: "Beauty Ballerina", serif !important;
+        font-size: 2.4rem !important;
+        font-weight: 600;
+        color:#f0eae0;
+        padding: 0;
+        line-height: 1;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
       }
     }
 
@@ -207,8 +213,8 @@
 
 
     .container {
-      max-width: 1600px;
-      column-gap: 200px;
+      max-width: 1364px;
+      column-gap: 195px;
     }
 
     .image-box {
