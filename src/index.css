@@ -1,7 +1,11 @@
 html {
   overflow-x: hidden;
   width: 100%;
-  scroll-behavior: auto; /* Let Lenis handle scroll behavior */
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Let Lenis handle scroll behavior */
 }
 
 body {
@@ -63,7 +67,10 @@ html.lenis {
 }
 
 /* Optimize images and interactive elements for smooth scrolling */
-img, video, canvas, iframe {
+img,
+video,
+canvas,
+iframe {
   /* Prevent images from causing scroll jank */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;

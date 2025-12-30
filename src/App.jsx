@@ -6,6 +6,7 @@ import About from './pages/about/About'
 import Gallery from './pages/gallery/Gallery'
 import Rout_ContactUs from './pages/ContactUs/Rout-ContactUs'
 import Blog from './pages/Blog/Blog'
+import BlogPost from './pages/BlogPost/BlogPost'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="blog" element={<Blog />} />
+          <Route path="blog/:id" element={<BlogPost />} />
           <Route path="contact" element={<Rout_ContactUs />} />
         </Route>
     </Routes>

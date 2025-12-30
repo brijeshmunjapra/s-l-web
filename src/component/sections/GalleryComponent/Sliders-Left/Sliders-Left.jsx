@@ -16,12 +16,68 @@ const Sliders_Left = () => {
 
   const sliderImages = [img1, img2, img3, img4, img5, img6];
 
+  // Create extended array for infinite loop (duplicate images at start and end)
+  const extendedImages = [
+    ...sliderImages.slice(-2), // Last 2 images at the beginning
+    ...sliderImages,           // Original images
+    ...sliderImages.slice(0, 2) // First 2 images at the end
+  ];
+
+  // Start at position 2 (after the duplicated images at start)
+  const [internalSlide, setInternalSlide] = useState(2);
+
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    setInternalSlide((prev) => {
+      const next = prev + 1;
+      if (next >= extendedImages.length - 2) {
+        // If reaching the end duplicates, jump back to start (disable transition)
+        setTimeout(() => {
+          if (sliderRef.current) {
+            sliderRef.current.style.transition = 'none';
+            setInternalSlide(2);
+            setCurrentSlide(0);
+            // Force reflow
+            sliderRef.current.offsetHeight;
+            setTimeout(() => {
+              if (sliderRef.current) {
+                sliderRef.current.style.transition = '';
+              }
+            }, 50);
+          }
+        }, 300); // Wait for transition to complete
+        return next;
+      }
+      const newCurrentSlide = (currentSlide + 1) % sliderImages.length;
+      setCurrentSlide(newCurrentSlide);
+      return next;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+    setInternalSlide((prev) => {
+      const next = prev - 1;
+      if (next < 0) {
+        // If reaching the start duplicates, jump to end (disable transition)
+        setTimeout(() => {
+          if (sliderRef.current) {
+            sliderRef.current.style.transition = 'none';
+            setInternalSlide(extendedImages.length - 4);
+            setCurrentSlide(sliderImages.length - 1);
+            // Force reflow
+            sliderRef.current.offsetHeight;
+            setTimeout(() => {
+              if (sliderRef.current) {
+                sliderRef.current.style.transition = '';
+              }
+            }, 50);
+          }
+        }, 300); // Wait for transition to complete
+        return next;
+      }
+      const newCurrentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+      setCurrentSlide(newCurrentSlide);
+      return next;
+    });
   };
 
   const openPopup = (startIndex) => {
@@ -45,10 +101,22 @@ const Sliders_Left = () => {
 
   useEffect(() => {
     if (sliderRef.current) {
-      const translateX = -currentSlide * (100 / 3); // 100% / 3 positions = 33.333% per slide
-      sliderRef.current.style.transform = `translateX(${translateX}%)`;
+      const slideItems = sliderRef.current.children;
+
+      // Calculate the total width of all slides up to internal slide position
+      // This ensures sliding is based on actual image widths, not fixed amounts
+      let totalWidth = 0;
+      for (let i = 0; i < internalSlide && i < slideItems.length; i++) {
+        // Ensure the element has loaded and has a width
+        if (slideItems[i] && slideItems[i].offsetWidth > 0) {
+          totalWidth += slideItems[i].offsetWidth;
+        }
+      }
+
+      // Move slider to show current slide at the start position
+      sliderRef.current.style.transform = `translateX(-${totalWidth}px)`;
     }
-  }, [currentSlide]);
+  }, [internalSlide]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -89,29 +157,32 @@ const Sliders_Left = () => {
         </button>
         <div className="slider-left-slider-container">
           <div ref={sliderRef} className='slider-left-slider-track'>
-            {sliderImages.map((img, index) => (
-              <div key={`slider-${index}`} className='slider-left-slider-item'>
-                <img
-                  src={img}
-                  alt={`Slider ${index + 1}`}
-                  loading="lazy"
-                  onClick={() => openPopup(index)}
-                  style={{ cursor: 'pointer' }}
-                />
-              </div>
-            ))}
-            {/* Duplicate first 2 images for seamless loop */}
-            {sliderImages.slice(0, 2).map((img, index) => (
-              <div key={`slider-duplicate-${index}`} className='slider-left-slider-item'>
-                <img
-                  src={img}
-                  alt={`Slider ${index + 1}`}
-                  loading="lazy"
-                  onClick={() => openPopup(index)}
-                  style={{ cursor: 'pointer' }}
-                />
-              </div>
-            ))}
+            {extendedImages.map((img, index) => {
+              // Calculate the original index for popup functionality
+              let originalIndex;
+              if (index < 2) {
+                // First 2 are duplicates of last 2
+                originalIndex = sliderImages.length - 2 + index;
+              } else if (index < 2 + sliderImages.length) {
+                // Middle images are original
+                originalIndex = index - 2;
+              } else {
+                // Last 2 are duplicates of first 2
+                originalIndex = index - 2 - sliderImages.length;
+              }
+
+              return (
+                <div key={`slider-${index}`} className='slider-left-slider-item'>
+                  <img
+                    src={img}
+                    alt={`Slider ${originalIndex + 1}`}
+                    loading="lazy"
+                    onClick={() => openPopup(originalIndex)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -123,6 +194,7 @@ const Sliders_Left = () => {
           ever since the 1500s, when an unknown printer took a galley of type
           and scrambled it to make a type specimen book. It has survived not
           only five centuries, but also the leap into electronic types.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos velit quae asperiores iure veniam quibusdam, ex, debitis corporis voluptatem, ad unde? Consequatur odio iste obcaecati sequi corrupti magnam quas pariatur.
         </p>
       </div>
 

@@ -15,10 +15,10 @@ const ContactUs = () => {
                 <div className="contact-content">
                     <h2>Cant Wait To MEEt your family</h2>
 
-                    <p>
-                        WE'RE EXCITED TO PHOTOGRAPH YOUR FAMILY, MATERNITY MOMENTS,OR SPECIAL MILESTONES.
-                        PLEASE LEAVE A MESSAGE BELOW,
-                        AND WE’LL BE IN TOUCH SOON.
+                    <p className="sub-heading">
+                        we're excited to photograph your family, maternity moments, or special milestones.
+                        please leave a message below,
+                        and we’ll be in touch soon.
                     </p>
 
                     <form>

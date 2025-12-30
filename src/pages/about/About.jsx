@@ -8,13 +8,15 @@ import Award from "../../component/sections/Award/Award";
 const About = () => {
   return (
     <div className="about-page">
-      <div className="about-header">
-        <div className="about-header-title">About Us</div>
-        <div className="about-header-description">
-          When an unknown printer took a galley of type and scrambled it to make
+      <div className="flex ">
+        <div className="grid-5">
+          <h2>About Us</h2>
+        </div>
+        <div className="grid-5">
+          <p className='Gallery-text'>When an unknown printer took a galley of type and scrambled it to make
           a type specimen book. It has survived not only five centuries, but
           also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          unchanged.</p>
         </div>
       </div>
       <div className="about-image">

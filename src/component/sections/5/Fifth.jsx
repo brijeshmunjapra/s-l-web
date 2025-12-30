@@ -29,41 +29,6 @@ const Fifth = React.memo(() => {
   const prevBlog = () => {
     setCurrentIndex((prev) => (prev - 1 + blogs.length) % blogs.length);
   };
-  // const timeoutRef = useRef(null);
-  // const indexRef = useRef(0);
-  // const lastUpdateTimeRef = useRef(performance.now());
-
-  // useEffect(() => {
-  //   const ROTATION_INTERVAL = 3000; // Exactly 3000ms between each change
-
-  //   const scheduleNext = () => {
-  //     const now = performance.now();
-  //     const elapsed = now - lastUpdateTimeRef.current;
-
-  //     // Calculate how long to wait to maintain exactly 3 seconds between updates
-  //     const remainingTime = ROTATION_INTERVAL - elapsed;
-  //     const waitTime = Math.max(0, remainingTime);
-
-  //     timeoutRef.current = setTimeout(() => {
-  //       const updateTime = performance.now();
-  //       indexRef.current = (indexRef.current + 1) % 3;
-  //       setCurrentIndex(indexRef.current);
-  //       lastUpdateTimeRef.current = updateTime;
-  //       scheduleNext();
-  //     }, waitTime);
-  //   };
-
-  //   // Initialize
-  //   lastUpdateTimeRef.current = performance.now();
-  //   scheduleNext();
-
-  //   return () => {
-  //     if (timeoutRef.current) {
-  //       clearTimeout(timeoutRef.current);
-  //       timeoutRef.current = null;
-  //     }
-  //   };
-  // }, []); // Empty dependency array ensures this runs only once
 
   const blogs = useMemo(() => [
     {
@@ -113,9 +78,9 @@ const Fifth = React.memo(() => {
       <div className="fifth-section-content">
         <div className="text-container">
           <h1 className="main-heading">Stories & Sparks</h1>
-          <h2 className="sub-heading">WE'RE EXCITED TO PHOTOGRAPH YOUR FAMILY, MATERNITY MOMENTS,OR SPECIAL MILESTONES.
-            PLEASE LEAVE A MESSAGE BELOW,
-            AND WE’LL BE IN TOUCH SOON.</h2>
+          <h2 className="sub-heading ">we're excited to photograph your family, maternity moments,or special milestones.
+            please leave a message below,
+            and we’ll be in touch soon</h2>
         </div>
         <div
           className="blogs-container"
@@ -138,7 +103,7 @@ const Fifth = React.memo(() => {
                   className={`blog-image ${isCenterPosition ? "blog-image-middle" : ""}`}
                   loading="lazy"
                 />
-                <p className="blog-caption">{blog.caption}</p>
+                <p className="blog-caption sub-heading">{blog.caption}</p>
               </div>
             </div>
           ))}

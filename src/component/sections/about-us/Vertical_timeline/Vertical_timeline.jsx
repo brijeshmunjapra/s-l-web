@@ -101,7 +101,7 @@ const Vertical_timeline = () => {
     const totalItems = timelineData.length;
 
     // Calculate scroll distance for each item step
-    const scrollPerItem = 500; // 300px scroll per item
+    const scrollPerItem = 400; // 300px scroll per item
     const totalScrollDistance = totalItems * scrollPerItem;
 
     // Create ScrollTrigger that pins the section and controls timeline
@@ -112,7 +112,8 @@ const Vertical_timeline = () => {
       pin: true,
       pinSpacing: true,
       anticipatePin: 1,
-      scrub: 1,
+      scrub: 2, // Increased scrub for smoother animation
+      invalidateOnRefresh: true, // Better performance on resize
       onUpdate: (self) => {
         const progress = self.progress;
 
@@ -122,13 +123,33 @@ const Vertical_timeline = () => {
         // Update active index state
         setActiveIndex(activeItemIndex);
 
-        // Show only the active item, hide others instantly
+        // Use opacity for smoother transitions instead of display
         timelineItems.forEach((item, index) => {
           if (index === activeItemIndex) {
-            item.style.display = 'flex'; // Show active item instantly
+            gsap.to(item, {
+              opacity: 1,
+              duration: 0.3,
+              ease: "power2.out",
+              onStart: () => item.style.display = 'flex'
+            });
           } else {
-            item.style.display = 'none'; // Hide others instantly
+            gsap.to(item, {
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.out",
+              onComplete: () => item.style.display = 'none'
+            });
           }
+        });
+      }
+    });
+
+    // Initialize year item positions
+    yearRefs.current.forEach((yearItem, index) => {
+      if (yearItem) {
+        gsap.set(yearItem, {
+          y: (index - 0) * 80,
+          opacity: index === 0 ? 1 : Math.abs(index - 0) <= 1 ? 0.7 : 0.3
         });
       }
     });
@@ -146,26 +167,26 @@ const Vertical_timeline = () => {
         gsap.to(yearRefs.current[prevActiveIndex], {
           scale: 1,
           y: 0,
-          opacity: 0.7,
-          duration: 0.3,
+          opacity: 0.1,
+          duration: 0.4,
           ease: "power2.out"
         });
       }
 
-      // Animate the new active year in
+      // Animate the new active year in with optimized settings
       if (yearRefs.current[activeIndex]) {
         gsap.fromTo(yearRefs.current[activeIndex],
           {
-            scale: 0.8,
+            scale: 2,
             y: 10,
             opacity: 0
           },
-          {
+          {  
             scale: 2,
             y: 0,
             opacity: 1,
-            duration: 0.5,
-            ease: "back.out(1.7)"
+            duration: 0.6,
+            ease: "power2.out" // Changed from back.out for smoother animation
           }
         );
       }
@@ -173,6 +194,24 @@ const Vertical_timeline = () => {
       setPrevActiveIndex(activeIndex);
     }
   }, [activeIndex, prevActiveIndex]);
+
+  // Smooth year items positioning animation
+  useEffect(() => {
+    yearRefs.current.forEach((yearItem, index) => {
+      if (yearItem) {
+        const targetY = (index - activeIndex) * 80;
+        const isVisible = Math.abs(index - activeIndex) <= 1;
+        const targetOpacity = index === activeIndex ? 1 : isVisible ? 0.7 : 0.3;
+
+        gsap.to(yearItem, {
+          y: targetY,
+          opacity: targetOpacity,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      }
+    });
+  }, [activeIndex]);
 
   // Initialize first background
   useEffect(() => {
@@ -185,13 +224,13 @@ const Vertical_timeline = () => {
       // Create smooth fade-in animation for new image
       gsap.fromTo(backgroundRef.current,
         {
-          opacity: 0.7,
-          scale: 1.1
+          opacity: 0.8,
+          scale: 1.05
         },
         {
           opacity: 1,
           scale: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power2.out"
         }
       );
@@ -223,15 +262,23 @@ const Vertical_timeline = () => {
                 return (
                   <div
                     key={`year-${item.id}`}
-                    className={`timeline-year-item ${index === activeIndex ? 'active start' : ''} ${isVisible ? 'visible' : 'hidden'}`}
-                    style={{
-                      transform: `translateY(${(index - activeIndex) * 80}px)`,
-                      // transition: 'all 1s ease'
+                    className={`timeline-year-item ${index === activeIndex ? 'active' : ''} ${isVisible ? 'visible' : 'hidden'}`}
+                    ref={(el) => {
+                      if (el && !yearRefs.current[index]) {
+                        yearRefs.current[index] = el;
+                        // Initialize position
+                        gsap.set(el, {
+                          y: (index - activeIndex) * 80,
+                          opacity: index === activeIndex ? 1 : isVisible ? 0.7 : 0.3
+                        });
+                      }
                     }}
                   >
                     <div
                       className='timeline-year'
-                      ref={(el) => yearRefs.current[index] = el}
+                      ref={(el) => {
+                        if (el) yearRefs.current[index] = el;
+                      }}
                     >
                       {item.year}
                     </div>

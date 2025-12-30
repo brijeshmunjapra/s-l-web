@@ -64,7 +64,8 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     // box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    padding: 0px 0px;
+    padding: 0 2rem 0 2rem; // Add proper padding for fixed state
+    height: 80px; // Set fixed height to prevent content jumping
     &::before {
       background: #f0eae0;
       backdrop-filter: blur(20px);
@@ -79,6 +80,13 @@
       &:hover,
       &.active {
         color: #000;
+      }
+    }
+
+    // Fix hamburger menu visibility when scrolled
+    .hamburger-menu {
+      span {
+        background-color: #333; // Dark color for better visibility on light background
       }
     }
   }
@@ -340,6 +348,16 @@
       display: flex;
     }
   }
+
+  // Mobile styles when navbar is scrolled/fixed
+  .navbar.scrolled {
+    padding: 0.75rem 1.5rem; // Adjust padding for fixed mobile navbar
+
+    .logo-container .logo-img {
+      width: 100px; // Smaller logo when fixed on mobile
+      height: 50px;
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -363,6 +381,16 @@
           min-width: 140px;
         }
       }
+    }
+  }
+
+  // Extra small screens when navbar is scrolled/fixed
+  .navbar.scrolled {
+    padding: 0.5rem 1rem; // Minimal padding for very small screens
+
+    .logo-container .logo-img {
+      width: 90px; // Even smaller logo for extra small screens
+      height: 45px;
     }
   }
 }
