@@ -231,3 +231,13 @@
 .blog-image-container:has(.blog-image-middle) .blog-caption {
   width: 80%;
 }
+
+
+@media (max-width:1600px) {
+  .fifth-section .main-heading{
+    font-size: 2.9rem;
+  }
+  .fifth-section{
+    padding: 0px 0px 100px !important;
+  }
+}

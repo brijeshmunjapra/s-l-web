@@ -89,6 +89,19 @@
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@media (max-width: 1600px) {
+  .second-section .main-heading {
+    font-size: 3rem !important;
+  }
+  .sub-heading{
+    font-size: 0.8rem !important;
+    margin: 0px 6rem !important;
+  }
+  .photo-wrapper{
+    max-width: 21%;
+  }
+}
+
 /* Large Desktop (1440px+) */
 @media (min-width: 1440px) {
 
@@ -106,6 +119,8 @@
   }
 }
 
+
+
 /* Desktop (1200px - 1440px) */
 @media (max-width: 1440px) {
 
@@ -119,7 +134,7 @@
   }
 
   .photos-container {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 }
 

@@ -101,8 +101,20 @@ const Slider_right = () => {
 
   useEffect(() => {
     if (sliderRef.current) {
-      const translateX = -internalSlide * (100 / 3); // 100% / 3 positions = 33.333% per slide
-      sliderRef.current.style.transform = `translateX(${translateX}%)`;
+      const slideItems = sliderRef.current.children;
+
+      // Calculate the total width of all slides up to internal slide position
+      // This ensures sliding is based on actual image widths, not fixed amounts
+      let totalWidth = 0;
+      for (let i = 0; i < internalSlide && i < slideItems.length; i++) {
+        // Ensure the element has loaded and has a width
+        if (slideItems[i] && slideItems[i].offsetWidth > 0) {
+          totalWidth += slideItems[i].offsetWidth;
+        }
+      }
+
+      // Move slider to show current slide at the start position
+      sliderRef.current.style.transform = `translateX(-${totalWidth}px)`;
     }
   }, [internalSlide]);
 
@@ -141,14 +153,7 @@ const Slider_right = () => {
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic types.
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic types.
+          ever since the 1500s
         </p>
       </div>
       <div className="slider-right-slider_space">

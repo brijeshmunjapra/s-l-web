@@ -131,6 +131,26 @@
   margin-top: 40px;
 }
 
+/* Large desktop adjustments */
+@media (max-width: 1600px) {
+  .first-section {
+    padding: 5rem 3rem;
+  }
+  .first-section-middle {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .first-section-left {
+    flex: 3;
+  }
+
+  .first-section-right {
+    flex: 2;
+    height: 95%;
+  }
+}
+
 /* 1440px specific adjustments */
 @media (max-width: 1440px) {
   .specificati {
@@ -155,7 +175,7 @@
   }
 
   .first-section-left {
-    flex: 2.8;
+    flex: 2.9;
   }
 
   .first-section-right {

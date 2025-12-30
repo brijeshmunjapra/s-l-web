@@ -46,11 +46,6 @@ const Seventh = () => {
             </div>
 
             <div className="divider" />
-
-            <div>
-              <span>YOUTUBE</span>
-              <a href="https://www.youtube.com/@shadeandlightt"target="_blank">@shadeandlightt__<span><img src={Frame} alt="" className="Frame-icon" /></span></a>
-            </div>
           </div>
         </div>
 
