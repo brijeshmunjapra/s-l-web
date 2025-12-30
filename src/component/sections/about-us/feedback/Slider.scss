@@ -131,3 +131,19 @@
     }
   }
 }
+
+@media (max-width:1600px) {
+  .card{
+    height: 195px;
+    padding: 20px 20px 20px;
+    .user{
+      margin-top: 45px;
+    }
+    .quote{
+      bottom:110px;
+    }
+  }
+  .swiper{
+    bottom: -45px;
+  }
+}

@@ -277,3 +277,15 @@
     }
   }
 }
+
+@media (max-width:1600px) {
+  .testimonials .image-box img {
+    height: 600px;
+  }
+  .testimonials .image-box{
+    height: 700px;
+  }
+  .testimonials .content {
+    padding-top: 65px;
+  }
+}

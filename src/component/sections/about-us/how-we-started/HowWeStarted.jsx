@@ -6,7 +6,6 @@ import Banner from "../../../../assets/about-us/1.jpg";
 const HowWeStarted = () => {
   return (
     <div className="how-we-started-container">
-      <div className="how-we-started-title">How We Started</div>
       <div className="how-we-started-content">
         <div className="how-we-started-left">
           <img src={OurStory} alt="Our Story" />

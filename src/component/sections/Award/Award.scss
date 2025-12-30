@@ -25,3 +25,15 @@
         align-items: center;
     }
 }
+
+@media (max-width:1600px) {
+    .award h1{
+        font-size: 40px;
+    }
+    .Award_images{
+        gap: 50px;
+        img{
+            width: 200px;
+        }
+    }
+}

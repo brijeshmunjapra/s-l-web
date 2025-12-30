@@ -30,7 +30,7 @@
                 transform: translateX(0);
 
                 .slider-right-slider-item {
-                    flex: 0 0 32.333%; // 1/3 of container width (3 images visible)
+                    flex: 0 0 auto; // 1/3 of container width (3 images visible)
                     height: 100%;
                     padding: 0 5px;
 
@@ -55,7 +55,7 @@
         font-weight: bold;
         position: absolute;
         top: 50%;
-        left: 10px;
+        left: -22px;
         z-index: 10000;
         cursor: pointer;
         display: flex;
@@ -282,5 +282,11 @@
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@media (max-width:1600px) {
+    .slider-right-brijesh-section .slider-right-content h2 {
+        font-size: 56px;
     }
 }
