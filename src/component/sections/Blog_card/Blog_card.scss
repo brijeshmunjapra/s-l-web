@@ -27,13 +27,23 @@
 
     .card-data {
         h4 {
-            font-size: 30px;
-            margin: 0px;
-            letter-spacing: 2px;
+            font-weight: 400;
+            color: #2a2a2a;
+            margin: 0;
+            padding: 0;
+            line-height: 1.9;
+            text-transform: uppercase;
+            font-family: "Rosehot", serif;
+            letter-spacing: 0.05em;
+            font-size: 2rem;
         }
-.card-description{
-    line-height: 30px;
-    letter-spacing: 1px;
+        .card-description {
+            font-family: "Times New Roman", "Times", serif !important;
+            color: rgba(69, 74, 84, 0.831372549);
+            font-weight: 300 !important;
+            letter-spacing: 1.2px;
+            line-height: 2;
+            font-size: 1.1rem;
 }
     }
 }
