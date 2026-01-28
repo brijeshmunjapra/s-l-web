@@ -6,10 +6,10 @@ import leftArrow from "../../assets/left-arrow.svg";
 import rightArrow from "../../assets/right-arrow.svg";
 
 const HeroBanner = () => {
-  console.log('HeroBanner component is rendering');
+  // console.log('HeroBanner component is rendering');
   const dispatch = useDispatch();
   const { banners, loading, error } = useSelector((state) => state.heroBanner);
-  console.log('HeroBanner Redux state:', { banners, loading, error });
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loadedImages, setLoadedImages] = useState(new Set());
