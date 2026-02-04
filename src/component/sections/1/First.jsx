@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { motion, useInView, useScroll } from "framer-motion";
+import { fetchFirstSectionData } from "../../../store/slices/firstSectionSlice";
 import "./First.scss";
 
 import leftImage from "../../../assets/first-section/left.jpg";
@@ -9,9 +11,12 @@ import topImage from "../../../assets/first-section/top.svg";
 // import { gsap } from "gsap";
 
 const First = React.memo(() => {
+  const dispatch = useDispatch();
+  const { data: apiData, loading, error } = useSelector((state) => state.firstSection);
   const ref = useRef(null);
   const topImageRef = useRef(null);
   const [lastScrollDirection, setLastScrollDirection] = useState("down");
+  const [hasFetched, setHasFetched] = useState(false);
 
   // Track scroll direction
   const { scrollY } = useScroll();
@@ -28,6 +33,14 @@ const First = React.memo(() => {
     const unsubscribe = scrollY.on("change", updateScrollDirection);
     return unsubscribe;
   }, [scrollY, lastScrollY]);
+
+  // Fetch first section data on component mount (only once)
+  useEffect(() => {
+    if (!hasFetched && !loading) {
+      setHasFetched(true);
+      dispatch(fetchFirstSectionData());
+    }
+  }, [hasFetched, loading, dispatch]);
 
   // Animate every time section becomes visible
   const isInView = useInView(ref, {
@@ -70,6 +83,24 @@ const First = React.memo(() => {
     },
   };
 
+  // Show loading state
+  if (loading) {
+    return (
+      <div ref={ref} className="first-section">
+        <div className="loading-state">Loading...</div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div ref={ref} className="first-section">
+        <div className="error-state">Failed to load content: {error}</div>
+      </div>
+    );
+  }
+
   return (
     <div ref={ref} className="first-section">
       <motion.div
@@ -78,7 +109,7 @@ const First = React.memo(() => {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <img src={leftImage} alt="Left" />
+        <img src={apiData?.leftImageUrl || leftImage} alt="Left" />
       </motion.div>
 
       <motion.div
@@ -94,22 +125,32 @@ const First = React.memo(() => {
 
       <div className="first-section-middle">
         <div className="middle-content">
-          <div>
-            Recognised as a leading voice in modern wedding photography and
-            filmmaking, Shade & Light has spent years shaping a visual style that
-            blends emotion, artistry, and cinematic elegance
-          </div>
-          <div>
-            Our long-standing journey has given us the privilege of creating
-            photographs and films that become treasured heirlooms crafted with
-            intention, depth, and heart.
-          </div>
-          <div className="specificati">
-            With a trusted legacy and a distinct creative vision, Shade & Light
-            continues to reimagine how love, culture, and celebration are
-            captured. We don’t just document weddings. We create art that lives
-            on.
-          </div>
+          {apiData?.description ? (
+            apiData.description.split('\n\n').map((paragraph, index) => (
+              <div key={index} className={index === 2 ? "specificati" : ""}>
+                {paragraph}
+              </div>
+            ))
+          ) : (
+            <>
+              <div>
+                Recognised as a leading voice in modern wedding photography and
+                filmmaking, Shade & Light has spent years shaping a visual style that
+                blends emotion, artistry, and cinematic elegance
+              </div>
+              <div>
+                Our long-standing journey has given us the privilege of creating
+                photographs and films that become treasured heirlooms crafted with
+                intention, depth, and heart.
+              </div>
+              <div className="specificati">
+                With a trusted legacy and a distinct creative vision, Shade & Light
+                continues to reimagine how love, culture, and celebration are
+                captured. We don't just document weddings. We create art that lives
+                on.
+              </div>
+            </>
+          )}
         </div>
       </div>
 
@@ -120,7 +161,7 @@ const First = React.memo(() => {
         animate={isInView ? "visible" : "hidden"}
       >
         <div className="right-image-wrapper">
-          <img src={rightImage} alt="Right" />
+          <img src={apiData?.rightImageUrl || rightImage} alt="Right" />
           <motion.div
             className="corner-svg"
             variants={cornerVariants}
