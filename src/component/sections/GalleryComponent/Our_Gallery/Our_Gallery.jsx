@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './Our_Gallery.scss'
+import { fetchGalleryPageContent } from '../../../../store/slices/galleryPageSlice'
 import img1 from '../../../../assets/fourth-section/1.webp'
 import img2 from '../../../../assets/fourth-section/2.webp'
 import img3 from '../../../../assets/fourth-section/3.webp'
@@ -8,6 +10,8 @@ import img5 from '../../../../assets/fourth-section/5.webp'
 import img6 from '../../../../assets/fourth-section/6.webp'
 
 const Our_Gallery = () => {
+  const dispatch = useDispatch()
+  const { data, loading, error } = useSelector((state) => state.galleryPage)
   const [hasAnimated, setHasAnimated] = useState(false)
   const sectionRef = useRef(null)
   const firstRowRef = useRef(null)
@@ -15,6 +19,10 @@ const Our_Gallery = () => {
   const startTimeRef = useRef(null)
 
   const firstRowImages = [img1, img2, img3, img4, img5, img6]
+
+  useEffect(() => {
+    dispatch(fetchGalleryPageContent())
+  }, [dispatch])
 
   // Animation function using requestAnimationFrame
   const animateMarquee = (timestamp) => {
@@ -78,10 +86,13 @@ const Our_Gallery = () => {
       <div className="section">
         <div className="flex">
           <div className="grid-5">
-            <h2>Our Gallery</h2>
+            <h2>{loading ? 'Loading...' : data?.data?.[0]?.content?.heading || 'Our Gallery'}</h2>
           </div>
           <div className="grid-5">
-            <p className='Gallery-text'>When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            {error && <p className='error-text'>Error: {error}</p>}
+            <p className='Gallery-text'>
+              {loading ? 'Loading content...' : data?.data?.[0]?.content?.paragraphs?.join(' ') || 'When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.'}
+            </p>
           </div>
         </div>
 
