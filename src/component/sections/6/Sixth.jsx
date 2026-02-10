@@ -1,38 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchReviews } from "../../../store/slices/reviewsSlice";
 import "./Sixth.scss";
 import leftArrow from "../../../assets/left-arrow.svg";
 import rightArrow from "../../../assets/right-arrow.svg";
 
 const Sixth = React.memo(() => {
+  const dispatch = useDispatch();
+  const { data: reviewsData, loading, error } = useSelector((state) => state.reviews);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const intervalRef = useRef(null);
   const sectionRef = useRef(null);
   const bgRef = useRef(null);
-  
-  const reviews = [
-    {
-      id: 0,
-      text: "Ethan's Urban Session Is Probably The Most Fun I've Ever Had While Someone Was Taking Pictures Of Me. If You're Looking To Get Amazing Pictures While Going For A Fun Walk - I Definitely Recommend This Guy!",
-      author: "John Deo",
-    },
-    {
-      id: 1,
-      text: "Absolutely incredible experience! The photos turned out better than I could have imagined. The photographer made us feel so comfortable and captured our genuine moments perfectly.",
-      author: "Sarah Johnson",
-    },
-    {
-      id: 2,
-      text: "Professional, creative, and so much fun to work with! Every shot was a masterpiece. Highly recommend for anyone looking for stunning photography with a personal touch.",
-      author: "Michael Chen",
-    },
-    {
-      id: 3,
-      text: "The best photography session we've ever had! The attention to detail and ability to capture emotions is unmatched. We're thrilled with every single photo.",
-      author: "Emily Rodriguez",
-    },
-  ];
+
+  // Transform API data to match component format
+  const reviews = reviewsData?.success
+    ? reviewsData.data.reviews
+        .filter(review => review.active) // Only show active reviews
+        .map(review => ({
+          id: review.id,
+          text: review.reviewContent, // Map reviewContent to text
+          author: review.clientName, // Map clientName to author
+        }))
+    : [];
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -126,6 +119,20 @@ const Sixth = React.memo(() => {
     };
   }, [isVisible, isPaused, reviews.length]);
 
+  // Fetch reviews on component mount
+  useEffect(() => {
+    if (!reviewsData) {
+      dispatch(fetchReviews());
+    }
+  }, [dispatch, reviewsData]);
+
+  // Reset currentIndex if it exceeds available reviews
+  useEffect(() => {
+    if (currentIndex >= reviews.length && reviews.length > 0) {
+      setCurrentIndex(0);
+    }
+  }, [reviews.length, currentIndex]);
+
   return (
     <>
       <div
@@ -149,29 +156,47 @@ const Sixth = React.memo(() => {
         onMouseLeave={() => setIsPaused(false)}
       >
       <div className="review-content">
-        <p className="review-text" key={`text-${currentIndex}`}>
-          {reviews[currentIndex].text}
-        </p>
-        <p className="review-author" key={`author-${currentIndex}`}>
-          - {reviews[currentIndex].author}
-        </p>
+        {loading ? (
+          <div className="loading-state">
+            <p className="review-text">Loading reviews...</p>
+          </div>
+        ) : error ? (
+          <div className="error-state">
+            <p className="review-text">Unable to load reviews at this time.</p>
+          </div>
+        ) : reviews.length > 0 ? (
+          <>
+            <p className="review-text" key={`text-${currentIndex}`}>
+              {reviews[currentIndex].text}
+            </p>
+            <p className="review-author" key={`author-${currentIndex}`}>
+              - {reviews[currentIndex].author}
+            </p>
+          </>
+        ) : (
+          <div className="no-reviews-state">
+            <p className="review-text">No reviews available.</p>
+          </div>
+        )}
       </div>
 
-      <div className="carousel-arrow-container">
-        <button
-          className="carousel-arrow carousel-arrow-left"
-          onClick={handlePrevious}
-        >
-          <img src={leftArrow} alt="Previous" />
-        </button>
+      {reviews.length > 1 && (
+        <div className="carousel-arrow-container">
+          <button
+            className="carousel-arrow carousel-arrow-left"
+            onClick={handlePrevious}
+          >
+            <img src={leftArrow} alt="Previous" />
+          </button>
 
-        <button
-          className="carousel-arrow carousel-arrow-right"
-          onClick={handleNext}
-        >
-          <img src={rightArrow} alt="Next" />
-        </button>
-      </div>
+          <button
+            className="carousel-arrow carousel-arrow-right"
+            onClick={handleNext}
+          >
+            <img src={rightArrow} alt="Next" />
+          </button>
+        </div>
+      )}
     </div>
     </>
   );

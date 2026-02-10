@@ -1,41 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { submitContactForm, fetchContactSubmission } from "../../store/slices/contactSubmissionSlice";
+import { submitContactForm } from "../../store/slices/contactSubmissionSlice";
 import "./contacUs.scss";
 import ContactImg from "../../assets/ContactUs.jpg";
 
 const ContactUs = () => {
     const dispatch = useDispatch();
-    const { existingData, loading, error } = useSelector((state) => state.contactSubmission);
+    const { loading, error } = useSelector((state) => state.contactSubmission);
 
     const [formData, setFormData] = useState({
         name: '',
         mobileNumber: '',
         message: ''
     });
-
-    // Fetch existing contact submission on component mount
-    useEffect(() => {
-        dispatch(fetchContactSubmission());
-    }, [dispatch]);
-
-    // Pre-fill form with existing data when it's loaded
-    useEffect(() => {
-        if (existingData) {
-            setFormData({
-                name: existingData.name || '',
-                mobileNumber: existingData.mobileNumber || '',
-                message: existingData.message || ''
-            });
-        } else {
-            // Clear form if no existing data (first time user)
-            setFormData({
-                name: '',
-                mobileNumber: '',
-                message: ''
-            });
-        }
-    }, [existingData]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -53,7 +30,7 @@ const ContactUs = () => {
             return;
         }
 
-        // Dispatch the submit action (will update existing or create new)
+        // Dispatch the submit action (creates new contact submission)
         dispatch(submitContactForm({
             name: formData.name.trim(),
             mobileNumber: formData.mobileNumber.trim(),
@@ -117,7 +94,7 @@ const ContactUs = () => {
                             )}
 
                             <button type="submit" disabled={loading}>
-                                {loading ? 'SENDING...' : (existingData ? 'UPDATE MESSAGE' : 'SEND MESSAGE')}
+                                {loading ? 'SENDING...' : 'SEND MESSAGE'}
                             </button>
                         </form>
                 </div>

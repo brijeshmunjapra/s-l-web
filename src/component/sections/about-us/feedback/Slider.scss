@@ -23,8 +23,8 @@
   background: #fbf8f3;
   width: 400px;
   border-radius: 8px;
-  padding: 6px 15px 60px;
-  height: 150px;
+  padding: 6px 15px 20px;
+  height: auto;
   flex-shrink: 0;
 
   p {
@@ -46,8 +46,8 @@
     img {
       width: 70px;
       height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
+      // border-radius: 50%;
+      // object-fit: cover;
     }
 
     h4 {
@@ -65,7 +65,7 @@
 
   /* quote EXACT */
   .quote {
-    position: absolute;
+    // position: absolute;
     bottom: 100px;
     right: 40px;
     font-size: 92px;
@@ -93,8 +93,8 @@
 
   .card {
     width: 450px;
-    height: 200px;
-    padding: 20px 25px 80px;
+    height: auto;
+    // padding: 20px 25px 80px;
     border-radius: 12px;
 
     p {
@@ -109,7 +109,9 @@
 
     .user {
       gap: 16px;
-
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       img {
         width: 60px;
         height: 60px;
@@ -134,8 +136,8 @@
 
 @media (max-width:1600px) {
   .card{
-    height: 195px;
-    padding: 20px 20px 20px;
+    height: auto;
+    // padding: 20px 20px 20px;
     .user{
       margin-top: 45px;
     }
