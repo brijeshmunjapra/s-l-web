@@ -3,32 +3,17 @@ import "./Fifth.scss";
 import image1 from "../../../assets/fifth-section/1.webp";
 import image2 from "../../../assets/fifth-section/2.webp";
 import image3 from "../../../assets/fifth-section/3.webp";
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
+// import leftArrow from "../../../assets/left-arrow.svg";
+// import rightArrow from "../../../assets/right-arrow.svg";
 
 const Fifth = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  // Check if we're on mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Navigation functions for mobile
-  const nextBlog = () => {
-    setCurrentIndex((prev) => (prev + 1) % blogs.length);
-  };
 
-  const prevBlog = () => {
-    setCurrentIndex((prev) => (prev - 1 + blogs.length) % blogs.length);
-  };
 
   const blogs = useMemo(() => [
     {
@@ -108,35 +93,6 @@ const Fifth = React.memo(() => {
             </div>
           ))}
         </div>
-        {isMobile && (
-          <div className="mobile-navigation">
-            <button
-              className="nav-btn nav-btn-prev"
-              onClick={prevBlog}
-              aria-label="Previous blog"
-            >
-              <img src={leftArrow} alt="Previous" className="arrow-svg" />
-            </button>
-            <div className="mobile-indicators">
-              {blogs.map((_, index) => (
-                <span
-                  key={index}
-                  className={`indicator ${index === currentIndex ? 'active' : ''}`}
-                  onClick={() => {
-                    setCurrentIndex(index);
-                  }}
-                />
-              ))}
-            </div>
-            <button
-              className="nav-btn nav-btn-next"
-              onClick={nextBlog}
-              aria-label="Next blog"
-            >
-              <img src={rightArrow} alt="Next" className="arrow-svg" />
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
