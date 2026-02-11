@@ -37,3 +37,61 @@
         }
     }
 }
+
+/* ================= MOBILE RESPONSIVE DESIGN ================= */
+
+@media (max-width: 768px) {
+    .award {
+        height: auto;
+        min-height: 50vh;
+        padding-bottom: 60px;
+
+        h1 {
+            font-size: 2.2rem;
+            padding-top: 40px;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .Award_images {
+            flex-direction: column;
+            gap: 30px;
+            padding: 0 20px;
+
+            img {
+                width: 250px;
+                height: auto;
+                max-width: 80%;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .award {
+        padding-bottom: 40px;
+
+        h1 {
+            font-size: 1.6rem;
+            padding-top: 30px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            line-height: 35px;
+            max-width: 95%;
+        }
+
+        .Award_images {
+            gap: 30px;
+            padding: 0 15px 0px 40px;
+
+            img {
+                width: 200px;
+                max-width: 85%;
+            }
+        }
+    }
+}

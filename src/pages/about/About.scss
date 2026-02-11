@@ -106,3 +106,29 @@
     line-height:27px;
   }
 }
+
+@media (max-width: 360px) {
+  .about-page .grid-5 h2{
+    font-size: 2rem;
+    padding-left: 0px;
+    text-align: start;
+  }
+  .about-page .grid-5 p{
+    font-size: 0.8rem;
+    padding-right: 0px;
+    text-align: start;
+    margin: 0px;
+  }
+  .about-page .flex{
+    margin: 30px 20px;
+  }
+  .about-page{
+    padding-top: 50px;
+  }
+  .about-page .about-image{
+    height: auto !important;
+  }
+  .how-we-started-container{
+    margin: 0px !important;
+  }
+}

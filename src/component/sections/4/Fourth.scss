@@ -41,10 +41,6 @@
   /* Optimized for smooth animation without forced GPU acceleration */
 }
 
-.fourth-section.animate .first-row-inner,
-.fourth-section.animate .second-row-inner {
-  /* Animation is now handled by JavaScript using requestAnimationFrame */
-}
 
 .image-item {
   flex-shrink: 0;
@@ -109,3 +105,9 @@
   }
 }
 
+@media (max-width: 360px) {
+  .fourth-section {
+    height: auto;
+    padding: 32px 0px;
+  }
+}
