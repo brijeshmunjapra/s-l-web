@@ -7,24 +7,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8rem 4rem 10rem;
+  padding: 5rem 5rem 7rem;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 // Big screen responsive design
-@media (min-width: 1200px) {
-  .fifth-section {
-    padding: 0 !important;
-  }
-}
 
 
 .text-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .fifth-section .main-heading {
