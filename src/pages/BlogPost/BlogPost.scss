@@ -77,3 +77,56 @@
         }
     }
 }
+
+@media (max-width: 480px) {
+    .blog-post-container{
+        padding-top: 100px;
+    }
+    .Blog-text h4{
+        font-size: 1.7rem !important;
+    }
+    .Blog-text p{
+        font-size: 0.8rem !important;
+    }
+    .Blog-text{
+        padding: 0px 10px;
+    }
+    .grid{
+        margin: 0px !important;
+        padding: 0px 10px;
+    }
+    .grid .Fist_images{
+        height: 300px !important;
+    }
+    .grid .Second_images{
+        height: 200px;
+        gap: 10px !important;
+    }
+    .grid .Fist_images .images_section_therd{
+        height: 200px !important;
+    }
+    .grid .Second_images .images_section_Fourth{
+        height: 200px !important;
+    }
+    .grid .Second_images .images_section_Fifth{
+        height: 200px !important;
+    }
+    .grid .Fist_images .images_section_Sixe{
+        height: 200px !important;
+    }
+    .grid .Second_images .Grid_Flex{
+        height: 95px !important;
+        gap: 10px !important;
+        img{
+            height: 100% !important;
+            width: 100% !important;
+            object-fit: cover !important;
+        }
+    }
+    .images_section_Fourth img{
+        width: 48% !important;
+    }
+    .Second_images img{
+        width: 48% !important;
+    }
+}
