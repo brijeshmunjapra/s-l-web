@@ -122,6 +122,15 @@
   }
 }
 
+.fifth-section-content {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 // Position classes for z-index management during animation
 .blog-item-position-1 {
   z-index: 2; // Middle item should appear on top
@@ -216,36 +225,42 @@
 
 
 @media (max-width:1600px) {
-  .fifth-section .main-heading{
+  .fifth-section .main-heading {
     font-size: 2.9rem;
   }
-  .fifth-section{
+
+  .fifth-section {
     padding: 0px 0px 100px !important;
   }
 }
 
 @media (max-width: 360px) {
-  .fifth-section .main-heading{
+  .fifth-section .main-heading {
     font-size: 2rem;
   }
-  .fifth-section{
+
+  .fifth-section {
     min-height: auto !important;
     padding: 32px 0px !important;
   }
-  .text-container{
+
+  .text-container {
     margin-bottom: 0px;
   }
-  .blog-item{
+
+  .blog-item {
     width: 100%;
   }
-  .blogs-container{
+
+  .blogs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
   }
-  .fifth-section-content{
+
+  .fifth-section-content {
     display: flex;
     flex-direction: column;
     gap: 30px;

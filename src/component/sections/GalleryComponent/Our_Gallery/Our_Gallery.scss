@@ -248,11 +248,73 @@
     }
 
     .first-row-2 {
-        min-height: 150px;
+        min-height: 300px;
     }
 
     .image-row-inner {
         gap: 0.15rem;
         padding: 0 0.25rem;
+    }
+
+    .grid-5 h2 {
+        font-size: 2rem;
+        padding-left: 0px;
+        text-align: start;
+    }
+
+    .grid-5 p {
+        font-size: 0.8rem;
+        padding-right: 0px;
+        text-align: start;
+        margin: 0px;
+    }
+
+    .section {
+        padding-top: 50px;
+    }
+
+    .slider-right-brijesh-section .slider-right-content h2 {
+        font-size: 1.7rem !important;
+    }
+
+    .slider-right-brijesh-section .slider-right-content {
+        padding: 0px 20px 0px 20px !important;
+        gap: 0px !important;
+        width: auto !important;
+    }
+
+    .slider-right-brijesh-section {
+        flex-direction: column;
+        height: auto !important;
+        padding: 20px 0px !important;
+    }
+
+    .slider-right-brijesh-section .slider-right-slider_space .slider-right-slider-container,
+    .slider-right-brijesh-section .slider-right-slider_space{
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .slider-right-brijesh-section .slider-right-slider_space .slider-right-slider-container .slider-right-slider-track .slider-right-slider-item{
+        width: 80% !important;
+        height: 90% !important;
+        align-items: center !important;
+        // justify-content: center !important;
+    }
+    .slider-right-brijesh-section .slider-right-slider_space .slider-right-slider-container .slider-right-slider-track{
+        align-items: center !important;
+        
+    }
+    .slider-right-brijesh-section .slider-right-arrow-left{
+        left: 15px !important;
+        width: 30px !important;
+        height: 30px !important;
+        // font-size: 18px !important;
+    }
+    .slider-right-brijesh-section .slider-right-arrow-Rigth{
+        right:75px !important;
+        width: 30px !important;
+        height: 30px !important;
+        // font-size: 18px !important;
     }
 }

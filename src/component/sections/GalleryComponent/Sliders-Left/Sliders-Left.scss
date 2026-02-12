@@ -285,3 +285,56 @@
         transform: scale(1);
     }
 }
+
+
+@media (max-width: 480px) {
+
+    .section {
+        padding-top: 50px;
+    }
+
+    .slider-left-brijesh-section .slider-left-content h2 {
+        font-size: 1.7rem !important;
+    }
+
+    .slider-left-brijesh-section .slider-left-content {
+        padding: 0px 20px 0px 20px !important;
+        gap: 0px !important;
+        width: auto !important;
+    }
+
+    .slider-left-brijesh-section {
+        flex-direction: column-reverse;
+        height: auto !important;
+        padding: 20px 0px !important;
+    }
+
+    .slider-left-brijesh-section .slider-left-slider_space .slider-left-slider-container,
+    .slider-left-brijesh-section .slider-left-slider_space{
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .slider-left-brijesh-section .slider-left-slider_space .slider-left-slider-container .slider-left-slider-track .slider-left-slider-item{
+        width: 80% !important;
+        height: 90% !important;
+        align-items: center !important;
+        // justify-content: center !important;
+    }
+    .slider-left-brijesh-section .slider-left-slider_space .slider-left-slider-container .slider-left-slider-track{
+        align-items: center !important;
+        
+    }
+    .slider-left-brijesh-section .slider-left-arrow-left{
+        left: 15px !important;
+        width: 30px !important;
+        height: 30px !important;
+        // font-size: 18px !important;
+    }
+    .slider-left-brijesh-section .slider-left-arrow-Rigth{
+        right:75px !important;
+        width: 30px !important;
+        height: 30px !important;
+        // font-size: 18px !important;
+    }
+}
