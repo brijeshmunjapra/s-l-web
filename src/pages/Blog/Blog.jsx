@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Blog.scss";
 import Blog_card from "../../component/sections/Blog_card/Blog_card";
 import { fetchBlogPageContent } from "../../store/slices/blogPageSlice";
+import { fetchBlogCouples } from "../../store/slices/blogCouplesSlice";
 
 const Blog = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.blogPage);
+  const { couples, loading: couplesLoading, error: couplesError } = useSelector((state) => state.blogCouples);
 
   useEffect(() => {
     dispatch(fetchBlogPageContent());
+    dispatch(fetchBlogCouples());
   }, [dispatch]);
 
   return (
@@ -25,7 +28,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <Blog_card />
+      <Blog_card couples={couples} loading={couplesLoading} error={couplesError} />
     </section>
   );
 };
