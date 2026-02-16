@@ -292,7 +292,7 @@
   }
 
   .first-section-middle {
-    order: 3;
+    order: 2;
     height: auto;
     font-size: 0.9rem;
     line-height: 1.6;
@@ -387,7 +387,7 @@
 /* Small mobile */
 @media (max-width: 480px) {
   .first-section {
-    padding: 2rem 0.75rem;
+    padding: 2rem 1rem;
     gap: 1rem;
   }
 
@@ -418,8 +418,8 @@
   }
 
   .first-section-right .right-image-wrapper {
-    height: 90%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     bottom: -10px;
 
     .corner-svg {
@@ -434,7 +434,7 @@
 /* Extra small mobile */
 @media (max-width: 360px) {
   .first-section {
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .first-section-middle {
@@ -452,14 +452,15 @@
     height: 30vh;
     min-height: 200px;
     margin-bottom: 0.75rem;
+    display: block;
   }
 
   .first-section-top {
     margin-bottom: 0.75rem;
 
     .top-content img {
-      width: 90%;
-      left: 5%;
+      width: 100%;
+      left: 0%;
     }
   }
 }

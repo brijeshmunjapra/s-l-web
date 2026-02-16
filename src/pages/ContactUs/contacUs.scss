@@ -4,7 +4,7 @@
 
   /* Reduce padding on large screens */
   @media (min-width: 1200px) {
-    padding: 60px 40px;
+    padding: 60px 118px;
   }
 
   /* Remove padding on extra large screens */
@@ -34,7 +34,7 @@
 
   /* Increase height on large screens */
   @media (min-width: 1200px) {
-    height: 600px;
+    height: 83.5vh !important;
   }
 
   /* Further increase height on extra large screens */
@@ -205,6 +205,11 @@
   }
 }
 
+@media (max-width: 1300px) {
+  .contact-content h2{
+    font-size: 2rem !important;
+  }
+}
 @media (max-width: 360px) {
   .contact-content h2{
     font-size: 1.7rem;
