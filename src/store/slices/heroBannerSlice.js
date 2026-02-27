@@ -5,8 +5,8 @@ export const fetchHeroBanners = createAsyncThunk(
   'heroBanner/fetchHeroBanners',
   async (_, { rejectWithValue }) => {
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
-      console.log('Environment variables VITE_API_BASE_URL:', import.meta.env.VITE_API_BASE_URL);
+      const baseUrl = import.meta.env.VITE_APP_WEB_URL_API || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
+      console.log('Environment variables VITE_APP_WEB_URL_API:', import.meta.env.VITE_APP_WEB_URL_API);
       console.log('Using baseUrl:', baseUrl);
 
       const fullUrl = `${baseUrl}/api/hero-banner`;
