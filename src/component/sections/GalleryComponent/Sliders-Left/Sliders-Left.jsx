@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "./Sliders-Left.scss";
-import img1 from '../../../../assets/fourth-section/1.webp';
-import img2 from '../../../../assets/fourth-section/2.webp';
-import img3 from '../../../../assets/fourth-section/3.webp';
-import img4 from '../../../../assets/fourth-section/4.webp';
-import img5 from '../../../../assets/fourth-section/5.webp';
-import img6 from '../../../../assets/fourth-section/6.webp';
 import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from 'react-icons/io';
 
-const Sliders_Left = () => {
+const Sliders_Left = ({ coupleName, shortDescription, images }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupCurrentSlide, setPopupCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
 
-  const sliderImages = [img1, img2, img3, img4, img5, img6];
+  // Use images from props, fallback to empty array if not provided
+  const sliderImages = images || [];
 
   // Create extended array for infinite loop (duplicate images at start and end)
   const extendedImages = [
@@ -174,8 +169,8 @@ const Sliders_Left = () => {
               return (
                 <div key={`slider-${index}`} className='slider-left-slider-item'>
                   <img
-                    src={img}
-                    alt={`Slider ${originalIndex + 1}`}
+                    src={img.imageUrl}
+                    alt={img.altText || `Slider ${originalIndex + 1}`}
                     loading="lazy"
                     onClick={() => openPopup(originalIndex)}
                     style={{ cursor: 'pointer' }}
@@ -187,11 +182,9 @@ const Sliders_Left = () => {
         </div>
       </div>
       <div className="slider-left-content">
-        <h2>Vivek  &  Palak</h2>
+        <h2>{coupleName || 'Couple Name'}</h2>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever since the 1500s,
+          {shortDescription || 'Description not available'}
         </p>
       </div>
 
@@ -207,8 +200,8 @@ const Sliders_Left = () => {
                 <IoIosArrowBack />
               </button>
               <img
-                src={sliderImages[popupCurrentSlide]}
-                alt={`Popup Slider ${popupCurrentSlide + 1}`}
+                src={sliderImages[popupCurrentSlide]?.imageUrl}
+                alt={sliderImages[popupCurrentSlide]?.altText || `Popup Slider ${popupCurrentSlide + 1}`}
                 className="slider-popup-image"
               />
               <button className="slider-popup-arrow slider-popup-arrow-right" onClick={nextPopupSlide}>

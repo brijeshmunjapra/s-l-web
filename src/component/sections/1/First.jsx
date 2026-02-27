@@ -92,14 +92,7 @@ const First = React.memo(() => {
     );
   }
 
-  // Show error state
-  if (error) {
-    return (
-      <div ref={ref} className="first-section">
-        <div className="error-state">Failed to load content: {error}</div>
-      </div>
-    );
-  }
+  // If there's an error, continue rendering with static fallback data instead of showing error
 
   return (
     <div ref={ref} className="first-section">

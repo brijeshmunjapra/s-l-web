@@ -2,26 +2,21 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './Our_Gallery.scss'
 import { fetchGalleryPageContent } from '../../../../store/slices/galleryPageSlice'
-import img1 from '../../../../assets/fourth-section/1.webp'
-import img2 from '../../../../assets/fourth-section/2.webp'
-import img3 from '../../../../assets/fourth-section/3.webp'
-import img4 from '../../../../assets/fourth-section/4.webp'
-import img5 from '../../../../assets/fourth-section/5.webp'
-import img6 from '../../../../assets/fourth-section/6.webp'
+import { fetchGalleryImages } from '../../../../store/slices/galleryImagesSlice'
 
 const Our_Gallery = () => {
   const dispatch = useDispatch()
   const { data, loading, error } = useSelector((state) => state.galleryPage)
+  const { images: galleryImages, loading: imagesLoading, error: imagesError } = useSelector((state) => state.galleryImages)
   const [hasAnimated, setHasAnimated] = useState(false)
   const sectionRef = useRef(null)
   const firstRowRef = useRef(null)
   const animationFrameRef = useRef(null)
   const startTimeRef = useRef(null)
 
-  const firstRowImages = [img1, img2, img3, img4, img5, img6]
-
   useEffect(() => {
     dispatch(fetchGalleryPageContent())
+    dispatch(fetchGalleryImages())
   }, [dispatch])
 
   // Animation function using requestAnimationFrame
@@ -100,15 +95,15 @@ const Our_Gallery = () => {
         <div ref={sectionRef} className={`gallery-marquee ${hasAnimated ? 'animate' : ''}`}>
           <div className='image-row first-row-2'>
             <div ref={firstRowRef} className='image-row-inner first-row-inner'>
-              {firstRowImages.map((img, index) => (
-                <div key={`first-${index}`} className='image-item'>
-                  <img src={img} alt={`Gallery ${index + 1}`} loading="lazy" />
+              {galleryImages.map((img, index) => (
+                <div key={`first-${img.id || index}`} className='image-item'>
+                  <img src={img.imageUrl} alt={img.altText || `Gallery ${index + 1}`} loading="lazy" />
                 </div>
               ))}
               {/* Duplicate for seamless loop */}
-              {firstRowImages.map((img, index) => (
-                <div key={`first-duplicate-${index}`} className='image-item'>
-                  <img src={img} alt={`Gallery ${index + 1}`} loading="lazy" />
+              {galleryImages.map((img, index) => (
+                <div key={`first-duplicate-${img.id || index}`} className='image-item'>
+                  <img src={img.imageUrl} alt={img.altText || `Gallery ${index + 1}`} loading="lazy" />
                 </div>
               ))}
             </div>

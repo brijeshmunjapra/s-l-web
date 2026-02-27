@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSeventhSectionImages } from '../../../store/slices/seventhSectionSlice';
 import "./Seventh.scss";
 
-import image1 from "../../../assets/seventh-section/1.webp";
-import image2 from "../../../assets/seventh-section/2.webp";
-import image3 from "../../../assets/fifth-section/2.webp";
-import image4 from "../../../assets/seventh-section/4.webp";
-import image5 from '../../../assets/fourth-section/4.webp'
 import Frame from "../../../assets/seventh-section/Frame.png"
+
 const Seventh = () => {
+  const dispatch = useDispatch();
+  const { images, loading, error } = useSelector(state => state.seventhSection);
+
+  useEffect(() => {
+    dispatch(fetchSeventhSectionImages());
+  }, [dispatch]);
+
+  // Helper function to safely get image by index
+  const getImage = (index) => {
+    return images && images[index] ? images[index] : null;
+  };
   return (
     <section className="seventh">
       <div className="seventh__wrapper">
@@ -15,17 +24,17 @@ const Seventh = () => {
         {/* LEFT IMAGE GRID */}
         <div className="seventh__grid">
           <div className="col">
-            <img src={image1} alt="" />
-            <img src={image4} alt="" />
+            {getImage(0) && <img src={getImage(0).imageUrl} alt="" />}
+            {getImage(3) && <img src={getImage(3).imageUrl} alt="" />}
           </div>
 
           <div className="col center">
-            <img src={image2} alt="" />
+            {getImage(1) && <img src={getImage(1).imageUrl} alt="" />}
           </div>
 
           <div className="col">
-            <img src={image3} alt="" />
-            <img src={image5} alt="" />
+            {getImage(2) && <img src={getImage(2).imageUrl} alt="" />}
+            {getImage(4) && <img src={getImage(4).imageUrl} alt="" />}
           </div>
         </div>
 

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchHowWeStartedData } from '../../../../store/slices/howWeStartedSlice';
 import "./HowWeStarted.scss";
 import OurStory from "../../../../assets/about-us/our-story.svg";
-import Banner from "../../../../assets/about-us/1.jpg";
 
 const HowWeStarted = () => {
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector(state => state.howWeStarted);
+
+  useEffect(() => {
+    dispatch(fetchHowWeStartedData());
+  }, [dispatch]);
+  // Don't render anything if data is not active or still loading
+  if (loading || !data) {
+    return null;
+  }
+
   return (
     <div className="how-we-started-container">
       <div className="how-we-started-content">
@@ -11,38 +23,15 @@ const HowWeStarted = () => {
           <img src={OurStory} alt="Our Story" />
           <div className="how-we-started-left-content">
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic types.
+              {data.description}
             </div>
-            <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic types.
-            </div>
-            <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic types.
-            </div>
-            <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
         <div className="how-we-started-right">
-          <img src={Banner} alt="Banner" />
+          <img src={data.imageUrl} alt="Banner" />
         </div>
       </div>
     </div>

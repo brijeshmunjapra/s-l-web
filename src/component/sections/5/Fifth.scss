@@ -34,17 +34,6 @@
   text-transform: uppercase;
 
   // Responsive font sizes
-  @media (min-width: 480px) {
-    font-size: 2.25rem;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 2.75rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 3.5rem;
-  }
 }
 
 .sub-heading {
@@ -67,7 +56,7 @@
 
   // Responsive height
   @media (min-width: 768px) {
-    min-height: 500px;
+    min-height: 400px;
   }
 
   // Mobile specific styles
@@ -226,7 +215,7 @@
 
 @media (max-width:1600px) {
   .fifth-section .main-heading {
-    font-size: 2.9rem;
+    font-size: 3rem !important;
   }
 
   .fifth-section {
@@ -234,6 +223,20 @@
   }
 }
 
+@media (max-width: 1400px) {
+  .fifth-section {
+    padding: 50px 0px 50px !important;
+  }
+  .text-container{
+    margin-bottom: 20px !important;
+  }
+  .fifth-section .main-heading {
+    font-size: 2.5rem !important;
+  }
+  .fifth-section-content{
+    max-width: 1000px;
+  }
+}
 @media (max-width: 360px) {
   .fifth-section .main-heading {
     font-size: 2rem;
@@ -264,5 +267,6 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+
   }
 }

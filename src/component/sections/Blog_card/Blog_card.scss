@@ -76,3 +76,15 @@
         padding-bottom: 0px;
     }
 }
+
+
+.loading, .error, .no-data {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error {
+    color: #d32f2f;
+}

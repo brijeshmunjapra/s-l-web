@@ -67,6 +67,9 @@
     width: calc(100% / 5);
     min-width: calc(100% / 5);
   }
+  .fourth-section{
+    height: 80vh !important;
+  }
 }
 
 @media (max-width: 1200px) {

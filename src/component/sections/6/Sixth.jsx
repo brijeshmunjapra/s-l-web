@@ -17,9 +17,11 @@ const Sixth = React.memo(() => {
   const bgRef = useRef(null);
 
   // Transform API data to match component format
-  const reviews = reviewsData?.success
-    ? reviewsData.data.reviews
-        .filter(review => review.active) // Only show active reviews
+  // Guard against missing `reviews` array to avoid runtime errors
+  const rawReviews = reviewsData?.data?.reviews;
+  const reviews = Array.isArray(rawReviews) && reviewsData?.success
+    ? rawReviews
+        .filter(review => review && review.active) // Only show active reviews
         .map(review => ({
           id: review.id,
           text: review.reviewContent, // Map reviewContent to text

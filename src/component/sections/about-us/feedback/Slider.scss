@@ -134,7 +134,7 @@
   }
 }
 
-@media (max-width:1600px) {
+@media (max-width:1600px) { 
   .card{
     height: auto;
     // padding: 20px 20px 20px;
@@ -148,4 +148,12 @@
   .swiper{
     bottom: -45px;
   }
+}
+@media (max-width:360px) {
+  .swiper-slide{
+    width: 328px !important;
+  }
+      .swiper {
+        bottom: -22px;
+    }
 }
