@@ -1,40 +1,43 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./Fifth.scss";
-import image1 from "../../../assets/fifth-section/1.webp";
-import image2 from "../../../assets/fifth-section/2.webp";
-import image3 from "../../../assets/fifth-section/3.webp";
+import { fetchBlogCouples } from "../../../store/slices/blogCouplesSlice";
 // import leftArrow from "../../../assets/left-arrow.svg";
 // import rightArrow from "../../../assets/right-arrow.svg";
 
 const Fifth = React.memo(() => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { couples, loading, error } = useSelector((state) => state.blogCouples);
   const [currentIndex, setCurrentIndex] = useState(0);
   // const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchBlogCouples());
+  }, [dispatch]);
 
 
 
   // Navigation functions for mobile
 
 
-  const blogs = useMemo(() => [
-    {
-      image: image1,
-      alt: "Brijesh & Radhika",
-      caption: "Brijesh & Radhika",
-      id: 0,
-    },
-    {
-      image: image2,
-      alt: "Parth & Meghal",
-      caption: "Parth & Meghal",
-      id: 1,
-    },
-    {
-      image: image3,
-      alt: "Sagar & Jenny",
-      caption: "Sagar & Jenny",
-      id: 2,
-    },
-  ], []);
+  const blogs = useMemo(() => {
+    if (!couples || couples.length === 0) return [];
+
+    return couples.slice(0, 3).map((couple, index) => ({
+      image: couple.images && couple.images.length > 0 ? couple.images[0].imageUrl : '',
+      alt: couple.coupleName || `Couple ${index + 1}`,
+      caption: couple.coupleName || `Couple ${index + 1}`,
+      id: index,
+      coupleId: couple.id,
+    }));
+  }, [couples]);
+
+  // Handle blog item click
+  const handleBlogClick = (coupleId) => {
+    navigate(`/blog/${coupleId}`);
+  };
 
   // Memoize blog positions and transforms to prevent recalculation on every render
   const blogTransforms = useMemo(() => {
@@ -58,6 +61,34 @@ const Fifth = React.memo(() => {
     });
   }, [blogs, currentIndex]);
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="fifth-section">
+        <div className="fifth-section-content">
+          <div className="text-container">
+            <h1 className="main-heading">Stories & Sparks</h1>
+            <h2 className="sub-heading">Loading stories...</h2>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="fifth-section">
+        <div className="fifth-section-content">
+          <div className="text-container">
+            <h1 className="main-heading">Stories & Sparks</h1>
+            <h2 className="sub-heading">Unable to load stories at this time.</h2>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fifth-section">
       <div className="fifth-section-content">
@@ -79,7 +110,9 @@ const Fifth = React.memo(() => {
               data-position={targetPosition}
               style={{
                 transform: `translateX(${translateX}%)`,
+                cursor: 'pointer',
               }}
+              onClick={() => handleBlogClick(blog.coupleId)}
             >
               <div className="blog-image-container">
                 <img

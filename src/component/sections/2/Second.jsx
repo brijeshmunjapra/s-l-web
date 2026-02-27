@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import './Second.scss'
-import coupleImage1 from '../../../assets/second-section/1.webp'
-import coupleImage2 from '../../../assets/second-section/2.webp'
-import coupleImage3 from '../../../assets/second-section/3.webp'
-import coupleImage4 from '../../../assets/second-section/4.webp'
+import { fetchGallerySliders } from '../../../store/slices/gallerySlidersSlice'
 
 const Second = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { sliders, loading, error } = useSelector(state => state.gallerySliders)
+
+  useEffect(() => {
+    dispatch(fetchGallerySliders())
+  }, [dispatch])
+
+  // Get images from the first active slider
+  const firstSliderImages = sliders.length > 0 ? sliders[0].images : []
+
+  // Handle image click to navigate to gallery
+  const handleImageClick = () => {
+    navigate('/gallery')
+  }
+
   return (
     <div className='second-section'>
       <div className='second-section-content'>
@@ -14,18 +29,18 @@ const Second = () => {
           <h2 className='sub-heading'>Emotive, editorial, and deeply romantic—my wedding photography is rooted in storytelling. I document love with an artful eye and a gentle approach, capturing every fleeting glance, quiet moment, and joyful celebration, with elegance.</h2>
         </div>
         <div className='photos-container'>
-          <div className='photo-wrapper'>
-            <img src={coupleImage1} alt="Abhay & Shruti" className='couple-photo' />
-          </div>
-          <div className='photo-wrapper'>
-            <img src={coupleImage2} alt="Abhay & Shruti" className='couple-photo' />
-          </div>
-          <div className='photo-wrapper'>
-            <img src={coupleImage3} alt="Abhay & Shruti" className='couple-photo' />
-          </div>
-          <div className='photo-wrapper'>
-            <img src={coupleImage4} alt="Abhay & Shruti" className='couple-photo' />
-          </div>
+          {firstSliderImages.slice(0, 4).map((img, index) => (
+            <div key={img.id || index} className='photo-wrapper'>
+              <img
+                src={img.imageUrl}
+                alt={img.altText || `Gallery ${index + 1}`}
+                className='couple-photo'
+                loading="lazy"
+                onClick={handleImageClick}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
