@@ -5,7 +5,7 @@ export const submitContactForm = createAsyncThunk(
   'contactSubmission/submitContactForm',
   async (contactData, { rejectWithValue }) => {
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
+      const baseUrl = import.meta.env.VITE_APP_WEB_URL_API || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
       const fullUrl = `${baseUrl}/api/contact`;
 
       console.log('Creating new contact submission:', contactData);

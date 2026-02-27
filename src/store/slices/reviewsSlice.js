@@ -5,7 +5,7 @@ export const fetchReviews = createAsyncThunk(
   'reviews/fetchReviews',
   async (_, { rejectWithValue }) => {
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
+      const baseUrl = import.meta.env.VITE_APP_WEB_URL_API || 'https://ky3l1rp5ng.execute-api.ap-south-1.amazonaws.com/dev';
       const fullUrl = `${baseUrl}/api/reviews`;
 
       console.log('Fetching reviews from:', fullUrl);
