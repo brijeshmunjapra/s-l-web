@@ -114,13 +114,13 @@ const Fourth = React.memo(() => {
           <div ref={firstRowRef} className='image-row-inner first-row-inner'>
             {topRowImages.map((img, index) => (
               <div key={`first-${img.id || index}`} className='image-item'>
-                <img src={img.url || img.src} alt={img.alt || `Top row image ${index + 1}`} loading="lazy" />
+                <img src={img.imageUrl} alt={img.alt || `Top row image ${index + 1}`} loading="lazy" />
               </div>
             ))}
             {/* Duplicate for seamless loop */}
             {topRowImages.map((img, index) => (
               <div key={`first-duplicate-${img.id || index}`} className='image-item'>
-                <img src={img.url || img.src} alt={img.alt || `Top row image ${index + 1}`} loading="lazy" />
+                <img src={img.imageUrl} alt={img.alt || `Top row image ${index + 1}`} loading="lazy" />
               </div>
             ))}
           </div>
@@ -130,13 +130,13 @@ const Fourth = React.memo(() => {
           <div ref={secondRowRef} className='image-row-inner second-row-inner'>
             {bottomRowImages.map((img, index) => (
               <div key={`second-${img.id || index}`} className='image-item'>
-                <img src={img.url || img.src} alt={img.alt || `Bottom row image ${index + 1}`} loading="lazy" />
+                <img src={img.imageUrl} alt={img.alt || `Bottom row image ${index + 1}`} loading="lazy" />
               </div>
             ))}
             {/* Duplicate for seamless loop */}
             {bottomRowImages.map((img, index) => (
               <div key={`second-duplicate-${img.id || index}`} className='image-item'>
-                <img src={img.url || img.src} alt={img.alt || `Bottom row image ${index + 1}`} loading="lazy" />
+                <img src={img.imageUrl} alt={img.alt || `Bottom row image ${index + 1}`} loading="lazy" />
               </div>
             ))}
           </div>
